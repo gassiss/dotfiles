@@ -1,0 +1,10 @@
+alias gs="git status"
+alias ga="git add"
+alias gco="git checkout"
+alias gc="git commit"
+alias gp="git push"
+alias g="git"
+alias n="npm"
+alias v="vim"
+
+
