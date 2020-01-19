@@ -69,3 +69,6 @@ bindkey '^e' edit-command-line
 
 # load aliases
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+
+# load zsh highlighting plugin. Must be last in the file
+source "$HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
