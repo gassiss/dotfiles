@@ -5,6 +5,7 @@ alias gc="git commit"
 alias gp="git push"
 alias g="git"
 alias n="npm"
-alias v="vim"
+alias v="nvim"
+alias vim="nvim"
 
 
