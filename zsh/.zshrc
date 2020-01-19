@@ -46,21 +46,23 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # change cursor shape for different vi modes
+# '\e[2 q' -> non blinking block
+# '\e[6 q' -> non blinking beam
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
+    echo -ne '\e[2 q'
   elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ $1 == 'beam' ]]; then
-    echo -ne '\e[5 q'
+    echo -ne '\e[6 q'
   fi
 }
 zle -N zle-keymap-select
 zle-line-init() {
  zle -K viins 
- echo -ne "\e[5 q"
+ echo -ne "\e[6 q"
 }
 zle -N zle-line-init
-echo -ne '\e[5 q'
-preexec() { echo -ne '\e[5 q' ;}
+echo -ne '\e[6 q'
+preexec() { echo -ne '\e[6 q' ;}
 
 # edit in line with vim with ctrl-e
 autoload edit-command-line
@@ -68,7 +70,7 @@ zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # load aliases
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+[ -f "$HOME/.dotfiles/aliasrc" ] && source "$HOME/.dotfiles/aliasrc"
 
 # load zsh highlighting plugin. Must be last in the file
-source "$HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
