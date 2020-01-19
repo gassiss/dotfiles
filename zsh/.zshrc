@@ -27,12 +27,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
-# Basic auto/tab complete
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit 
-_comp_options+=(globdots)
+# Case insensitive auto/tab complete
+autoload -U compinit && compinit
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
 # vi mode
 bindkey -v
