@@ -9,3 +9,10 @@ Also put these in your `.zprofile` to override the `zsh` and `nvim` folder confi
 export ZDOTDIR="$HOME/.dotfiles/zsh"
 export XDG_CONFIG_HOME="$HOME/.dotfiles"
 ```
+
+VIM TODO:
+
+* Git integration
+* JS/TS/JSX/TSX syntax
+* Linting
+* Prettier
