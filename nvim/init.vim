@@ -46,6 +46,9 @@ map <C-l> <C-w>l
 " Use ,w to save
 map <Leader>w :w<CR>
 
+" remaps Y to behave like D
+nnoremap Y y$
+
 " Auto close stuff like (, {, [... with (), {}, [], etc...
 "inoremap " ""<left>
 "inoremap ' ''<left>
