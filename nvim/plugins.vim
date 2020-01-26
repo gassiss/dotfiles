@@ -133,6 +133,19 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
+" Increase/reduce vertical split size.
+nnoremap <silent> <a-,> :vertical resize -1<CR>
+nnoremap <silent> <a-.> :vertical resize +1<CR>
+nnoremap <silent> <a-<> :vertical resize -5<CR>
+nnoremap <silent> <a->> :vertical resize +5<CR>
+
+" Increase/reduce horizontal split size.
+nnoremap <silent> <a--> :resize -1<CR>
+nnoremap <silent> <a-=> :resize +1<CR>
+nnoremap <silent> <a-_> :resize -5<CR>
+nnoremap <silent> <a-+> :resize +5<CR>
+
+
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
