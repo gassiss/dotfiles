@@ -6,7 +6,6 @@ source $HOME/.dotfiles/nvim/plugins.vim
 " Enables proper highlighting in json comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-
 " indentation stuff
 set expandtab
 set shiftwidth=2
@@ -48,6 +47,11 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 " Use ,w to save
 map <Leader>w :w<CR>
