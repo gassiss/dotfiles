@@ -1,6 +1,12 @@
 " set leader key
 let mapleader=","
 
+source $HOME/.dotfiles/nvim/plugins.vim
+
+" Enables proper highlighting in json comments
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
 " indentation stuff
 set expandtab
 set shiftwidth=2
