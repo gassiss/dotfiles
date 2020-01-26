@@ -27,7 +27,7 @@ For [WSLTTY Gruvbox Theme](https://github.com/morhetz/gruvbox-contrib/blob/maste
 
 ```
 ForegroundColour=235,219,178
-BackgroundColour=29,32,33
+BackgroundColour=38,38,38
 CursorColour=253,157,79
 Black=40,40,40
 BoldBlack=146,131,116
