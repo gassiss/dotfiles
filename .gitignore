@@ -1,3 +1,5 @@
 .zcompdump
 zsh/plugins
 nvim/.netrwhist
+nvim/plugged
+configstore
