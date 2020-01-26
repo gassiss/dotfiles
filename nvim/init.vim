@@ -37,7 +37,7 @@ set ignorecase
 " If search contains uppercase characters it becomes case sensitive
 set smartcase
 
-" ,e to remove highlighting from searches
+" ,n to remove highlighting from searches
 nnoremap <Leader>n :nohl<CR>
 
 " fixes typos. Might be interesting
@@ -54,15 +54,6 @@ map <Leader>w :w<CR>
 
 " remaps Y to behave like D
 nnoremap Y y$
-
-" Auto close stuff like (, {, [... with (), {}, [], etc...
-"inoremap " ""<left>
-"inoremap ' ''<left>
-"inoremap ( ()<left>
-"inoremap [ []<left>
-"inoremap { {}<left>
-"inoremap {<CR> {}<left><CR><CR><BS><up><TAB>
-"inoremap )) <CR>
 
 " Automatically removes trailling white space on save
 autocmd BufWritePre * %s/\s\+$//e
