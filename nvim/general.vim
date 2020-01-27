@@ -19,6 +19,8 @@ set splitright
 " tasks
 set path+=**
 
+set wildignorecase
+
 " enables mouse in all modes
 set mouse=a
 
