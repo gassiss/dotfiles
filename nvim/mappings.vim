@@ -21,6 +21,21 @@ tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 
+" ESC on terminal mode behaves like insert mode
+tnoremap <ESC> <C-\><C-n>
+
+" Increase/reduce vertical split size.
+nnoremap <silent> <a-,> :vertical resize -1<CR>
+nnoremap <silent> <a-.> :vertical resize +1<CR>
+nnoremap <silent> <a-<> :vertical resize -5<CR>
+nnoremap <silent> <a->> :vertical resize +5<CR>
+
+" Increase/reduce horizontal split size.
+nnoremap <silent> <a--> :resize -1<CR>
+nnoremap <silent> <a-=> :resize +1<CR>
+nnoremap <silent> <a-_> :resize -5<CR>
+nnoremap <silent> <a-+> :resize +5<CR>
+
 " ,gb on visual mode pastes the selected text inside a replacer
 " This is supposed to be used in similar scenarios as GB/Ctrl-D in VSCode
 vnoremap <Leader>gb y:%s/<C-R>"//gc<left><left><left>
