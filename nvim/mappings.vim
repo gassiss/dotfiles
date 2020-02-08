@@ -6,7 +6,7 @@ nnoremap : ;
 inoremap jk <right><Esc>
 
 " Use ,w to save
-map <Leader>w :w<CR>
+nnoremap <Leader>w :w<CR>
 
 " remaps Y to behave like D
 nnoremap Y y$
