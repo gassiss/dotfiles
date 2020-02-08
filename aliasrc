@@ -7,5 +7,5 @@ alias g="git"
 alias n="npm"
 alias v="nvim"
 alias vim="nvim"
-
-
+alias t="tmux"
+alias ta="tmux attach -t"
