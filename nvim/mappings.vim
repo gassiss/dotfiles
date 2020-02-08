@@ -1,5 +1,9 @@
 " normal mode I want ; to be :
 nnoremap ; :
+nnoremap : ;
+
+" jk exists insert mode
+inoremap jk <right><Esc>
 
 " Use ,w to save
 map <Leader>w :w<CR>
