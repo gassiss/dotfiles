@@ -2,6 +2,10 @@
 nnoremap ; :
 nnoremap : ;
 
+" replace ` with ' in normal mode for better mark jumping
+nnoremap ` '
+nnoremap ' `
+
 " jk exists insert mode
 inoremap jk <right><Esc>
 
