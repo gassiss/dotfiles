@@ -3,7 +3,7 @@
   "coc.preferences.formatOnSaveFiletypes": ["js", "ts", "tsx", "css"],
   "prettier.printWidth": 100,
   "eslint.run": "onType",
-  "eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": false,
   "javascript.suggestionActions.enabled": false,
   "typescript.suggestionActions.enabled": false
 }
