@@ -32,6 +32,8 @@ let g:coc_global_extensions = [
 " Setup Prettier command and makes it run on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " autocmd BufWritePre *.js,*.ts,*.tsx,*.css,*.scss,*.json,*.html Prettier
+" Testing around doing the formatter manually since it is laggy sometimes on save
+nnoremap <silent> <Leader>p :Prettier<CR>
 
 " CoC recommended options
 " if hidden is not set, TextEdit might fail.
