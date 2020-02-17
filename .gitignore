@@ -3,3 +3,6 @@ zsh/plugins
 nvim/.netrwhist
 nvim/plugged
 configstore
+coc
+dconf
+pulse
