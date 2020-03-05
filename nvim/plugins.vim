@@ -35,7 +35,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Testing around doing the formatter manually since it is laggy sometimes on save
 nnoremap <silent> <Leader>p :Prettier<CR>
 " ,[ eslint auto fix
-nnoremap <silent> <Leader>[ :CocCommand eslint.executeAutofix
+nnoremap <silent> <Leader>[ :CocCommand eslint.executeAutofix<CR>
 
 " CoC recommended options
 " if hidden is not set, TextEdit might fail.
