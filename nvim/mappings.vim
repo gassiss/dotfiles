@@ -48,3 +48,15 @@ nnoremap <silent> <a-+> :resize +5<CR>
 " This is supposed to be used in similar scenarios as GB/Ctrl-D in VSCode
 vnoremap <Leader>gb y:%s/<C-R>"//gc<left><left><left>
 
+function! Tag()
+  let tagName = input('Tag name: ')
+  return "<".tagName."></".tagName.">\eF/hi"
+endfunction
+inoremap <expr> <Leader>ta Tag()
+
+function! CloseTag()
+  let tagName = input('Tag name: ')
+  return "<".tagName." />"
+endfunction
+inoremap <expr> <Leader>ct CloseTag()
+
