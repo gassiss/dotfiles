@@ -67,7 +67,7 @@ nnoremap <leader>Y "+yg_
 nnoremap <leader>yy "+yy
 
 " Paste from system clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
+nnoremap <leader><leader>p "+p
+nnoremap <leader><leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
