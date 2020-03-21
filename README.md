@@ -23,6 +23,17 @@ Neovim's CoC plugin requires Neovim 0.3+. Ubuntu official repos are @ 0.2, add t
 sudo add-apt-repository ppa:neovim-ppa/stable
 ```
 
+# TMUX plugins
+
+Using `gitmux` in the status bar. To enable it go here:
+
+```
+https://github.com/arl/gitmux
+```
+
+Download the binary and enable it.
+
+
 For [WSLTTY Gruvbox Theme](https://github.com/morhetz/gruvbox-contrib/blob/master/mintty/gruvbox.minttyrc) (with modified background to match Vim's). Put this in `users/$USER/AppData/Roaming/wsltty/themes`
 
 ```
