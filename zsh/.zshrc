@@ -8,7 +8,7 @@ zstyle ':vcs_info:*' formats       \
 zstyle ':vcs_info:*' enable git
 
 vcs_info_wrapper() {
-  vcs_info  
+  vcs_info
   if [ -n "$vcs_info_msg_0_" ]; then
     echo "${vcs_info_msg_0_}"
   fi
@@ -20,7 +20,8 @@ GITBRANCH=$'$(vcs_info_wrapper)'
 # %{} expands to set color
 # %~ expands to current dir
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$GITBRANCH$%b "
+PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+RPROMPT="$GITBRANCH"
 
 # History in cache directory
 HISTSIZE=10000
@@ -54,7 +55,7 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 zle-line-init() {
- zle -K viins 
+ zle -K viins
  echo -ne "\e[6 q"
 }
 zle -N zle-line-init
