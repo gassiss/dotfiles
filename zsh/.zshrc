@@ -1,3 +1,5 @@
+source $HOME/.zshrc
+
 # sets up git branch in the prompt. As (branch) or (branch|action)
 setopt prompt_subst
 autoload -Uz vcs_info
