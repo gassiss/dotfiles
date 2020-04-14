@@ -3,11 +3,10 @@ Steal anything you want.
 
 Run `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git` inside `zsh/plugins` folder.
 
-Also put these in your `.zprofile` to override the `zsh` and `nvim` folder configuration defaults:
+Also put these in your `.zprofile` to override the `zsh` folder configuration defaults:
 
 ```
 export ZDOTDIR="$HOME/.dotfiles/zsh"
-export XDG_CONFIG_HOME="$HOME/.dotfiles"
 ```
 
 Run this to enable `vim-plug`. Go [here](https://github.com/junegunn/vim-plug) if it doesn't work:
@@ -21,6 +20,12 @@ Neovim's CoC plugin requires Neovim 0.3+. Ubuntu official repos are @ 0.2, add t
 
 ```
 sudo add-apt-repository ppa:neovim-ppa/stable
+```
+
+Also run this to link CoC config file to the one in this folder:
+
+```
+ln -s "$HOME/.config/nvim/coc-settings.json" "$HOME/.dotfiles/nvim/coc-settings.json"
 ```
 
 # TMUX plugins
