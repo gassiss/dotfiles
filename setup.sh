@@ -10,14 +10,14 @@ DOTFILES=$HOME/.dotfiles
 sudo apt-get update && sudo apt-get upgrade -y
 
 # Add Neovim unstable repo
-sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
 # sudo apt-get update --> Uncomment this after removing the comment below
 
 # Ubuntu 20.04 has a bug that will prevent installing node
 # This fixes it
 # Remove when bug is fixed
 # Issue: https://github.com/microsoft/WSL/issues/5125
-sudo add-apt-repository ppa:rafaeldtinoco/lp1871129
+sudo add-apt-repository ppa:rafaeldtinoco/lp1871129 -y
 sudo apt update
 sudo apt install -y --allow-downgrades \
   libc6=2.31-0ubuntu8+lp1871129~1 \
@@ -29,7 +29,7 @@ sudo apt-mark hold libc6
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 # Install deps
-sudo apt-get install neovim zsh nodejs build-essential
+sudo apt-get install -y neovim zsh nodejs build-essential
 
 # Enables vim-plug
 # https://github.com/junegunn/vim-plug
@@ -52,7 +52,7 @@ if [ ! -f "$WSLTTY_THEME" ]; then
 fi
 
 # Enabling gitmux
-curl -oL $HOME/gitmux.tar.gz https://github.com/arl/gitmux/releases/download/v0.6.0/gitmux_0.6.0_linux_amd64.tar.gz
+curl -o $HOME/gitmux.tar.gz -L https://github.com/arl/gitmux/releases/download/v0.6.0/gitmux_0.6.0_linux_amd64.tar.gz
 tar -xvzf $HOME/gitmux.tar.gz
 sudo mv $HOME/gitmux /usr/bin/gitmux
 
