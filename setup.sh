@@ -11,19 +11,7 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Add Neovim unstable repo
 sudo add-apt-repository ppa:neovim-ppa/unstable -y
-# sudo apt-get update --> Uncomment this after removing the comment below
-
-# Ubuntu 20.04 has a bug that will prevent installing node
-# This fixes it
-# Remove when bug is fixed
-# Issue: https://github.com/microsoft/WSL/issues/5125
-sudo add-apt-repository ppa:rafaeldtinoco/lp1871129 -y
-sudo apt update
-sudo apt install -y --allow-downgrades \
-  libc6=2.31-0ubuntu8+lp1871129~1 \
-  libc6-dev=2.31-0ubuntu8+lp1871129~1 \
-  libc-dev-bin=2.31-0ubuntu8+lp1871129~1
-sudo apt-mark hold libc6
+sudo apt-get update
 
 # Node 12.x
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
