@@ -1,6 +1,0 @@
-# To use common configuration in %APPDATA%\mintty, simply remove this file
-CursorType=block
-CursorBlinks=no
-CtrlShiftShortcuts=yes
-Scrollbar=none
-ThemeFile=gruvbox-wsltty-theme
