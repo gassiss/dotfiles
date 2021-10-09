@@ -70,5 +70,10 @@ bindkey '^e' edit-command-line
 # load aliases
 [ -f "$HOME/.dotfiles/aliasrc" ] && source "$HOME/.dotfiles/aliasrc"
 
+source <(kubectl completion zsh)
+
+export FZF_DEFAULT_COMMAND='rg --files'
+
 # load zsh highlighting plugin. Must be last in the file
 source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
