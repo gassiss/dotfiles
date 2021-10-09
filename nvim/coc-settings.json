@@ -1,3 +1,4 @@
 {
+  "javascript.validate.enable": false
   // "coc.preferences.formatOnSaveFiletypes": ["js", "ts", "tsx", "css", "vue"]
 }
