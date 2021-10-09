@@ -6,12 +6,22 @@ Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-vinegar'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" fzf config
+nnoremap <silent> <C-p> :FZF<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.25, 'relative': v:true, 'yoffset': 1.0 } }
 
 call plug#end()
 
 " fixes colors
 set termguicolors
 colorscheme gruvbox
+
+hi CocUnderline gui=underline term=undercurl
+hi CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
+hi CocWarningHighlight ctermfg=yellow guifg=#c4ab39 gui=undercurl term=undercurl
 
 " vim-gitgutter does not expose a way of closing diff preview. This does it
 nnoremap <silent> <Leader>hc :bd gitgutter<CR>
@@ -20,6 +30,11 @@ nnoremap <silent> <Leader>hc :bd gitgutter<CR>
 highlight GitGutterAdd guifg=#8ec07c guibg=#3c3836
 highlight GitGutterChange guifg=#b8bb26 guibg=#3c3836
 highlight GitGutterDelete guifg=#cc241d guibg=#3c3836
+
+" nord's colorscheme gitgutter
+" highlight GitGutterAdd guifg=#8ec07c guibg=#2e3440
+" highlight GitGutterChange guifg=#b8bb26 guibg=#2e3440
+" highlight GitGutterDelete guifg=#cc241d guibg=#2e3440
 
 " CoC extensions
 let g:coc_global_extensions = [
@@ -37,7 +52,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Testing around doing the formatter manually since it is laggy sometimes on save
 nnoremap <silent> <Leader>p :Prettier<CR>
 " ,[ eslint auto fix
-nnoremap <silent> <Leader>[ :CocCommand eslint.executeAutofix<CR>
+" nnoremap <silent> <Leader>[ :CocCommand eslint.executeAutofix<CR>
 
 " CoC recommended options
 " if hidden is not set, TextEdit might fail.
