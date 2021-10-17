@@ -1,0 +1,66 @@
+## Settings
+borderwidth 0
+snapdist 15
+gap 10 10 10 10
+sticky yes
+moveamount 15
+
+## Keybinds
+
+unbind-key	all
+
+bind-key	4S-q		quit
+bind-key	4S-r		restart
+bind-key	4-space		menu-exec
+bind-key  4-p     dmenu_run
+bind-key	4-Return	st
+bind-key  4-v     "create_or_focus dbeaver"
+
+## Groups
+bind-key	4-1		    group-only-1
+bind-key	4-2		    group-only-2
+bind-key	4-3		    group-only-3
+bind-key	4-4		    group-only-4
+bind-key	4M-1		  group-toggle-1
+bind-key	4M-2		  group-toggle-2
+bind-key	4M-3		  group-toggle-3
+bind-key	4M-4		  group-toggle-4
+bind-key	4S-1		  window-movetogroup-1
+bind-key	4S-2		  window-movetogroup-2
+bind-key	4S-3		  window-movetogroup-3
+bind-key	4S-4		  window-movetogroup-4
+
+## WM stuff
+bind-key	4C-q  	 window-delete
+bind-key	4-m	 	   window-maximize
+bind-key	4S-m		 window-fullscreen
+bind-key	4C-h		 window-move-left-big
+bind-key	4C-j		 window-move-down-big
+bind-key	4C-k		 window-move-up-big
+bind-key	4C-l		 window-move-right-big
+# These are buggy, way less than moveamount. Make custom script for this
+bind-key	4S-h		 window-resize-left-big
+bind-key	4S-j		 window-resize-down-big
+bind-key	4S-k		 window-resize-up-big
+bind-key	4S-l		 window-resize-right-big
+# Make these two increase and decrease size keeping ratio
+# bind-key	4-y		 "shrink.sh 1"
+# bind-key	4-u		 "grow.sh 1"
+bind-key	4-h		   window-snap-left
+bind-key	4-j		   window-snap-down
+bind-key	4-k		   window-snap-up
+bind-key	4-l		   window-snap-right
+# Implement this
+# bind-key	4-g		   "center.sh"
+# bind-key  4S-g   "center and resize"
+bind-key  M-Tab    window-cycle
+bind-key  MS-Tab  window-rcycle
+bind-key  4-i      window-raise
+
+## Mouse binds
+
+bind-mouse	4-1		window-move
+bind-mouse  M-1   window-raise
+bind-mouse	4-3		window-resize
+
+
