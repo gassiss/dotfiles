@@ -51,7 +51,7 @@ bind-key	4-j		   window-snap-down
 bind-key	4-k		   window-snap-up
 bind-key	4-l		   window-snap-right
 # Implement this
-# bind-key	4-g		   "center.sh"
+bind-key	4-g		 "center.sh"
 # bind-key  4S-g   "center and resize"
 bind-key  M-Tab    window-cycle
 bind-key  MS-Tab  window-rcycle
