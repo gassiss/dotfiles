@@ -9,12 +9,18 @@ moveamount 15
 
 unbind-key	all
 
-bind-key	4S-q		quit
+bind-key	4CS-q		quit
 bind-key	4S-r		restart
 bind-key	4-space		menu-exec
 bind-key  4-p     dmenu_run
 bind-key	4-Return	st
-bind-key  4-v     "create_or_focus dbeaver"
+bind-key  4-q     "run_or_raise.sh google-chrome-stable google-chrome"
+bind-key  4-w     "run_or_raise.sh brave-browser-nightly brave-browser-nightly"
+bind-key  4-e     "run_or_raise.sh dbeaver DBeaver"
+# bind-key  4-r     "run_or_raise.sh dbeaver DBeaver"
+bind-key  4-a     "run_or_raise.sh st st-256color"
+bind-key  4-s     "run_or_raise.sh code code-oss"
+bind-key  4-d     "run_or_raise.sh slack slack"
 
 ## Groups
 bind-key	4-1		    group-only-1
