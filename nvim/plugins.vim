@@ -18,6 +18,7 @@ call plug#end()
 " fixes colors
 set termguicolors
 colorscheme gruvbox
+hi Normal ctermbg=none guibg=none
 
 hi CocUnderline gui=underline term=undercurl
 hi CocErrorHighlight ctermfg=red  guifg=#c4384b gui=undercurl term=undercurl
