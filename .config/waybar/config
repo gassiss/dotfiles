@@ -1,0 +1,34 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-right": ["tray", "network", "battery", "pulseaudio"],
+    "modules-center": ["clock"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "numeric-first": true
+    },
+    "tray": {
+        "spacing": 15,
+    },
+    "network": {
+        "format": "{essid} \uf1eb"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "\uf6a9",
+        "format-icons": {
+            "default": ["\uf027", "\uf028"]
+        }
+    },
+    "clock": {
+        "format": "{:%a %d, %H:%M}",
+        "format-alt": "{:%a %d, %H:%M}"
+    },
+    "tray": {
+        "spacing": 10
+    }
+}
