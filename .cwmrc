@@ -1,7 +1,7 @@
 ## Settings
 borderwidth 0
 snapdist 15
-gap 10 10 10 10
+gap 0
 sticky yes
 moveamount 15
 
@@ -13,7 +13,7 @@ bind-key	4CS-q		quit
 bind-key	4S-r		restart
 bind-key	4-space		menu-exec
 bind-key  4-p     dmenu_run
-bind-key	4-Return	st
+bind-key	4-Return	alacritty
 bind-key  4-q     "run_or_raise.sh google-chrome-stable google-chrome"
 bind-key  4-w     "run_or_raise.sh brave-browser-nightly brave-browser-nightly"
 bind-key  4-e     "run_or_raise.sh dbeaver DBeaver"

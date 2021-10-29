@@ -49,9 +49,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-output eDP-1 resolution 1920x1080 position 1920,0
+# output eDP-1 resolution 1920x1080 position 0,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+for_window [app_id="^pavucontrol$"] floating enable, move position 1405 0
 
 ### Idle configuration
 #
@@ -99,6 +101,10 @@ input type:keyboard {
 
     # Kill focused window
     bindsym $mod+Shift+q kill
+
+    # open dots
+    bindsym $mod+Shift+u exec alacritty --class="dots" -e bash -c "nvim $HOME/.dotfiles"
+    for_window [app_id="^dots$"] floating enable
 
     # Start your launcher
     bindsym $mod+p exec alacritty --class="launcher" -e bash -c "compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec"
@@ -202,13 +208,6 @@ input type:keyboard {
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    # bindsym $mod+a focus parent
-
-    # Centers a floating window
-    bindsym $mod+$alt+s move position 0 ppt 50 ppt
-    bindsym $mod+$alt+a move position center
 #
 # Scratchpad:
 #
@@ -246,6 +245,20 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "move" {
+    # snapping
+    bindsym $left exec sway-move left
+    bindsym $down exec sway-move bottom
+    bindsym $up exec sway-move top
+    bindsym $right exec sway-move right
+    # bindsym $down resize set 960 540, move position 0 510
+    # bindsym $up rrsize set 960 540, move position 960 0
+    # bindsym $right resize set 960 540, move position 960 510
+    bindsym g move position center
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+g mode "move"
 
 #
 # Status Bar:
