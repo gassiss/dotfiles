@@ -22,7 +22,8 @@
         "format-muted": "\uf6a9",
         "format-icons": {
             "default": ["\uf027", "\uf028"]
-        }
+        },
+        "on-click": "pavucontrol"
     },
     "clock": {
         "format": "{:%a %d, %H:%M}",
