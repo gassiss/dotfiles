@@ -8,6 +8,9 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/wiki.vim'
+
+let g:wiki_root = '~/wiki'
 
 " fzf config
 nnoremap <silent> <C-p> :FZF<CR>

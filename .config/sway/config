@@ -40,7 +40,9 @@ client.focused_inactive #00000000 #00000000 #00000000
 client.unfocused #282828 #00000000 #00000000
 client.urgent #00000000 #00000000 #00000000
 
-assign [class="Slack"] workspace 3
+assign [class="Slack"] workspace d
+assign [class="Google-chrome"] workspace q
+assign [class="Brave-browser-nightly"] workspace q
 
 ### Output configuration
 #
@@ -105,6 +107,10 @@ input type:keyboard {
     # open dots
     bindsym $mod+Shift+u exec alacritty --class="dots" -e bash -c "nvim $HOME/.dotfiles"
     for_window [app_id="^dots$"] floating enable
+
+    # open wiki
+    bindsym $mod+Shift+n exec alacritty --class="wiki" -e bash -c "nvim $HOME/wiki"
+    for_window [app_id="^wiki$"] floating enable; resize set 990 540; move position 930 508
 
     # Start your launcher
     bindsym $mod+p exec alacritty --class="launcher" -e bash -c "compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec"
