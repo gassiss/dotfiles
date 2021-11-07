@@ -15,6 +15,8 @@ set numberwidth=2
 set splitbelow
 set splitright
 
+set exrc
+
 " Search down into subfolders. Provides tab-completion for all file-related
 " tasks
 set path+=**
