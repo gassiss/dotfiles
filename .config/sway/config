@@ -20,6 +20,12 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
+
+exec mako
+
 focus_follows_mouse no
 
 gaps inner 2
@@ -42,7 +48,7 @@ client.urgent #00000000 #00000000 #00000000
 
 assign [class="Slack"] workspace d
 assign [class="Google-chrome"] workspace q
-assign [class="Brave-browser-nightly"] workspace q
+assign [class="Brave-browser-nightly"] workspace w
 
 ### Output configuration
 #
@@ -87,6 +93,10 @@ input type:touchpad {
     dwt enabled
     tap enabled
     natural_scroll enabled
+}
+
+input type:pointer {
+    accel_profile flat
 }
 
 input type:keyboard {
