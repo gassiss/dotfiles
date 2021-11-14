@@ -15,7 +15,10 @@ set numberwidth=2
 set splitbelow
 set splitright
 
+" enables folder specific vim configuration
 set exrc
+
+set nowrap
 
 " Search down into subfolders. Provides tab-completion for all file-related
 " tasks
