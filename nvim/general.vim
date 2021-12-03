@@ -15,6 +15,12 @@ set numberwidth=2
 set splitbelow
 set splitright
 
+" folds
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 " enables folder specific vim configuration
 set exrc
 

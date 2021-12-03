@@ -44,7 +44,8 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-eslint',
   \ 'coc-json',
-  \ 'coc-vetur'
+  \ 'coc-vetur',
+  \ 'coc-go'
   \ ]
 
 " Setup Prettier command and makes it run on save
