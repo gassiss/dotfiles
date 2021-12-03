@@ -2,6 +2,19 @@
 nnoremap ` '
 nnoremap ' `
 
+" jumping keeps buffer centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" move selected text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '>-2<CR>gv=gv
+
+" replace highlighted text
+vnoremap <leader>s "hy:%s/<C-r>h//c<left><left><left>
+vnoremap <leader>c "hy:%s/<C-r>h//gc<left><left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
 " jk exists insert mode
 inoremap jk <right><Esc>
 
