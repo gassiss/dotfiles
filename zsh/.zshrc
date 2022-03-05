@@ -29,7 +29,7 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
 # Case insensitive auto/tab complete
-autoload -U compinit && compinit
+autoload -U +X compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
 # vi mode
