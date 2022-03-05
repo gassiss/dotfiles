@@ -11,7 +11,7 @@ Plug 'junegunn/fzf.vim'
 
 " fzf config
 nnoremap <silent> <C-p> :FZF<CR>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.25, 'relative': v:true, 'yoffset': 1.0 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.50, 'relative': v:true, 'yoffset': 1.0 } }
 
 call plug#end()
 

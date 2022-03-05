@@ -1,7 +1,7 @@
 # dotfiles
 Steal anything you want.
 
-Font: https://github.com/eliheuer/caskaydia-cove
+Font: https://github.com/supercomputra/SF-Mono-Font
 
 
 Backup GNOME settings:
