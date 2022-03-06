@@ -1,9 +1,9 @@
 " set leader key
 let mapleader=","
 
-source $HOME/.dotfiles/nvim/plugins.vim
-source $HOME/.dotfiles/nvim/general.vim
-source $HOME/.dotfiles/nvim/mappings.vim
+runtime ./plugins.vim
+runtime ./general.vim
+runtime ./mappings.vim
 
 " fixes typos. Might be interesting
 " iab wiht with
