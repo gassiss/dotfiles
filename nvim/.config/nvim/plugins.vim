@@ -8,6 +8,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-lualine/lualine.nvim'
 
 " fzf config
 nnoremap <silent> <C-p> :FZF<CR>
@@ -186,3 +187,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+lua << END
+require('lualine').setup({
+  options = {
+    theme = 'gruvbox',
+    icons_enabled = false,
+  }
+})
+END

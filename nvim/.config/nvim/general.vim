@@ -44,3 +44,6 @@ set ignorecase
 " If search contains uppercase characters it becomes case sensitive
 set smartcase
 
+" Hides the mode from the cmd line below the status line
+set noshowmode
+
