@@ -1,0 +1,8 @@
+{
+  "name": "improvs",
+  "description": "Move notifications to right side and disables workspace switcher popup",
+  "uuid": "improvements",
+  "shell-version": [
+    "41"
+  ]
+}
