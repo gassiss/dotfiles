@@ -13,3 +13,9 @@ Restore:
 ```
 dconf load / < saved_settings.dconf
 ```
+
+Enable gnome improvements extensions (after `stow gnome` and GNOME reload)
+
+```
+gnome-extensions enable improvements
+```
