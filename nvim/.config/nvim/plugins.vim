@@ -1,11 +1,12 @@
 " Plugins
 call plug#begin()
 
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lualine/lualine.nvim'
-
-Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
+
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -28,6 +29,15 @@ nnoremap <silent> <Leader>hc :bd gitgutter<CR>
 highlight GitGutterAdd guifg=#8ec07c guibg=#3c3836
 highlight GitGutterChange guifg=#b8bb26 guibg=#3c3836
 highlight GitGutterDelete guifg=#cc241d guibg=#3c3836
+" Always display gitgutter column
+set signcolumn=yes
+
+highlight DiagnosticUnderlineError gui=undercurl
+highlight DiagnosticUnderlineHint gui=undercurl
+highlight DiagnosticUnderlineInfo gui=undercurl
+highlight DiagnosticUnderlineWarn gui=undercurl
+highlight DiagnosticFloatingError guifg=#fb4934
+highlight DiagnosticFloatingWarn guifg=#d79921
 
 lua << END
 require('lualine').setup({
