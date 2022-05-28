@@ -23,10 +23,16 @@ autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 RPROMPT="$GITBRANCH"
 
-# History in cache directory
-HISTSIZE=10000
-SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+# History stuff
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+export HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+setopt SHARE_HISTORY # sets global history
+setopt HIST_VERIFY # doesnt submit command when searching with ^r
 
 # Case insensitive auto/tab complete
 autoload -U +X compinit && compinit
@@ -43,9 +49,6 @@ export KEYTIMEOUT=1
 # bindkey -M menuselect 'j' vi-down-line-or-history
 # bindkey -v '^?' backward-delete-char
 
-# change cursor shape for different vi modes
-# '\e[2 q' -> non blinking block
-# '\e[6 q' -> non blinking beam
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
     echo -ne '\e[2 q'
@@ -73,6 +76,27 @@ bindkey '^e' edit-command-line
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 
 export FZF_DEFAULT_COMMAND='rg --files'
+
+# load zsh history fzf plugin
+# credits: https://github.com/joshskidmore/zsh-fzf-history-search
+fzf_history_search() {
+  setopt extendedglob
+  candidates=(${(f)"$(fc -li -1 0 | fzf +s +m -x -e -q "$BUFFER")"})
+  local ret=$?
+  if [ -n "$candidates" ]; then
+    BUFFER="${candidates[@]/(#m)*/${${(As: :)MATCH}[4,-1]}}"
+    BUFFER="${BUFFER[@]/(#b)(?)\\n/$match[1]
+}"
+    zle vi-fetch-history -n $BUFFER
+  fi
+  zle reset-prompt
+  return $ret
+}
+
+autoload fzf_history_search
+zle -N fzf_history_search
+
+bindkey '^r' fzf_history_search
 
 # load zsh highlighting plugin. Must be last in the file
 [ -d "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
