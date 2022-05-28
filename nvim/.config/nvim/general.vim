@@ -7,6 +7,11 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+" Enable this to have global status line instead of per-window. Only on
+" nightly build
+" set laststatus=3
+" highlight WinSeparator guibg=None
+
 " show relative line numbers
 set number relativenumber
 set numberwidth=2
