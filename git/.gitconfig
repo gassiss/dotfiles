@@ -3,17 +3,19 @@
 	name = Will Assis
 [core]
 	editor = nvim
-# 	pager  = delta
+	pager  = delta
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
-# [interactive]
-# 	diffFilter = delta --color-only
-# [delta]
-# 	navigate = true
-# 	line-numbers = true
-# 	syntax-theme = gruvbox
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+	syntax-theme = gruvbox-dark
+	side-by-side = true
+	diff-so-fancy = true
 [merge]
 	conflictstyle = diff3
 [diff]

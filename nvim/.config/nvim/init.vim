@@ -1,5 +1,5 @@
 " set leader key
-let mapleader=","
+let mapleader=" "
 
 runtime ./plugins.vim
 runtime ./general.vim

@@ -11,7 +11,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
 
 " replace highlighted text
-vnoremap <leader>s "hy:%s/<C-r>h//c<left><left><left>
+vnoremap <leader>s "hy:%s/<C-r>h//c<left><left>
 vnoremap <leader>c "hy:%s/<C-r>h//gc<left><left>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
@@ -57,13 +57,13 @@ function! Tag()
   let tagName = input('Tag name: ')
   return "<".tagName."></".tagName.">\eF/hi"
 endfunction
-inoremap <expr> <Leader>ta Tag()
+" inoremap <expr> <Leader>ta Tag()
 
 function! CloseTag()
   let tagName = input('Tag name: ')
   return "<".tagName." />"
 endfunction
-inoremap <expr> <Leader>ct CloseTag()
+" inoremap <expr> <Leader>ct CloseTag()
 
 " Copy to system clipboard
 vnoremap <leader>y "+y
@@ -76,3 +76,6 @@ nnoremap <leader><leader>p "+p
 nnoremap <leader><leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
