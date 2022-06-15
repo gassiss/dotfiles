@@ -7,6 +7,8 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+set scrolloff=5
+
 " Enable this to have global status line instead of per-window. Only on
 " nightly build
 " set laststatus=3
