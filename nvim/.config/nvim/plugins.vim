@@ -1,12 +1,22 @@
 " Plugins
 call plug#begin()
 
+Plug 'nvim-lua/plenary.nvim'
+
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 
-Plug 'sheerun/vim-polyglot'
+" netrw improvements
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
