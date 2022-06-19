@@ -1,17 +1,37 @@
+function bind(op, outer_opts)
+    outer_opts = outer_opts or {noremap = true}
+    return function(lhs, rhs, opts)
+        opts = vim.tbl_extend("force",
+            outer_opts,
+            opts or {}
+        )
+        vim.keymap.set(op, lhs, rhs, opts)
+    end
+end
+
+local nnoremap = bind("n")
+local inoremap = bind("i")
+local vnoremap = bind("v")
+
+local function config(opts)
+		return vim.tbl_deep_extend("force", {
+		on_attach = function()
+			print("yo attach")
+			nnoremap("gd", function() vim.lsp.buf.definition() end)
+			nnoremap("gt", function() vim.lsp.buf.type_definition() end)
+			nnoremap("grr", function() vim.lsp.buf.references() end)
+			nnoremap("grn", function() vim.lsp.buf.rename() end)
+			nnoremap("K", function() vim.lsp.buf.hover() end)
+			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+			nnoremap("[d", function() vim.diagnostic.goto_prev() end)
+			nnoremap("]d", function() vim.diagnostic.goto_next() end)
+			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
+		end,
+	}, opts or {})
+end
+
 -- npm install -g typescript typescript-language-server
-require("lspconfig").tsserver.setup{
-  on_attach = function ()
-    vim.api.nvim_buf_set_keymap(0, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "gt", ":lua vim.lsp.buf.type_definition()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "grr", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "grn", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "K", ":lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "[d", ":lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "]d", ":lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "i", "<C-h>", ":lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_buf_set_keymap(0, "n", "<leader>vd", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
-    -- Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
-  end
-}
+require("lspconfig").tsserver.setup(config())
 -- npm i -g vscode-langservers-extracted
 require("lspconfig").eslint.setup{}
+
