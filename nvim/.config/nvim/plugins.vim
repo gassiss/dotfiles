@@ -12,6 +12,9 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'ellisonleao/gruvbox.nvim'
 " telescope
 " vim-qf
 " vim-fugitive
@@ -20,7 +23,6 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'airblade/vim-gitgutter'
-Plug 'morhetz/gruvbox' " replace with lua one after treesitter
 
 " netrw improvements
 Plug 'tpope/vim-vinegar'
