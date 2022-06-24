@@ -1,17 +1,5 @@
-function bind(op, outer_opts)
-    outer_opts = outer_opts or {noremap = true}
-    return function(lhs, rhs, opts)
-        opts = vim.tbl_extend("force",
-            outer_opts,
-            opts or {}
-        )
-        vim.keymap.set(op, lhs, rhs, opts)
-    end
-end
-
-local nnoremap = bind("n")
-local inoremap = bind("i")
-local vnoremap = bind("v")
+local nnoremap = require("gassiss/keymap").nnoremap
+local inoremap = require("gassiss/keymap").inoremap
 
 local cmp = require('cmp')
 

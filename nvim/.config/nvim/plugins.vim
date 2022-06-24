@@ -1,18 +1,21 @@
 " Plugins
 call plug#begin()
 
+" nvim's lodash
 Plug 'nvim-lua/plenary.nvim'
+" lsp + completion
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+" snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
 " treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
 " Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'ellisonleao/gruvbox.nvim'
 " telescope
