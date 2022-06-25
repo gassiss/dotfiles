@@ -27,4 +27,4 @@ inoremap("<c-l>", function()
   end
 end, { silent = true })
 
-nnoremap("<leader><leader>s", require("luasnip.loaders").edit_snippet_files)
+nnoremap("<leader><leader>s", "<cmd>so ~/.config/nvim/lua/gassiss/luasnip.lua<cr>")
