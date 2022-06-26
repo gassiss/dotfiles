@@ -20,7 +20,7 @@ GITBRANCH=$'$(vcs_info_wrapper)'
 # %{} expands to set color
 # %~ expands to current dir
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
 RPROMPT="$GITBRANCH"
 
 # History stuff

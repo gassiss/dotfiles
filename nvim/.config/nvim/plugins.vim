@@ -16,7 +16,13 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
+" this doesnt work. maybe try to replace context.vim for this later again
 " Plug 'nvim-treesitter/nvim-treesitter-context'
+
+" shows code context
+Plug 'wellle/context.vim'
+
+" lua gruvbox colorscheme
 Plug 'ellisonleao/gruvbox.nvim'
 " telescope
 " vim-qf
@@ -29,6 +35,7 @@ Plug 'airblade/vim-gitgutter'
 
 " netrw improvements
 Plug 'tpope/vim-vinegar'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -59,6 +66,10 @@ highlight DiagnosticUnderlineInfo gui=undercurl
 highlight DiagnosticUnderlineWarn gui=undercurl
 highlight DiagnosticFloatingError guifg=#fb4934
 highlight DiagnosticFloatingWarn guifg=#d79921
+
+" context.vim binds
+let g:context_enabled = 0
+nnoremap <silent> <leader>ct <cmd>ContextToggleWindow<CR>
 
 lua << END
 require('lualine').setup({

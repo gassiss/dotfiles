@@ -23,9 +23,6 @@ set smartcase
 set noshowmode
 set completeopt=menu,menuone,noselect
 set updatetime=50
-" Enable this to have global status line instead of per-window. Only on
-" nightly build
-" set laststatus=3
-" highlight WinSeparator guibg=None
+set laststatus=3
 
 
