@@ -16,7 +16,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate' }
-" this doesnt work. maybe try to replace context.vim for this later again
+" this doesnt work. maybe try to replace context.vim for this later again.
+" Supposed to be faster
 " Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " shows code context
@@ -24,11 +25,14 @@ Plug 'wellle/context.vim'
 
 " lua gruvbox colorscheme
 Plug 'ellisonleao/gruvbox.nvim'
+
 " telescope
+" harpoon
 " vim-qf
 " vim-fugitive
-" nvim-dap, dap-ui, dap text
-" dadbod, dadbod-ui, dadbod comp
+" notes workflow: ?
+" debugging workflow: nvim-dap, dap-ui, dap text
+" db workflow: dadbod, dadbod-ui, dadbod comp
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'airblade/vim-gitgutter'

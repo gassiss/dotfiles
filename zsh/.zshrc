@@ -21,7 +21,7 @@ GITBRANCH=$'$(vcs_info_wrapper)'
 # %~ expands to current dir
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
-RPROMPT="$GITBRANCH"
+RPROMPT="$GITBRANCH$USER@$HOST"
 
 # History stuff
 export HISTSIZE=1000000
@@ -97,6 +97,10 @@ autoload fzf_history_search
 zle -N fzf_history_search
 
 bindkey '^r' fzf_history_search
+
+# load zsh auto suggestions plugin
+# [ -d "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# bindkey '^k' autosuggest-accept
 
 # load zsh highlighting plugin. Must be last in the file
 [ -d "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
