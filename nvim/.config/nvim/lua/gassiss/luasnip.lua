@@ -6,8 +6,9 @@ require("luasnip.loaders.from_lua").lazy_load({
   paths = "~/.config/nvim/lua/gassiss/snippets"
 })
 
--- make typescript snippets available in JS
+-- make typescript snippets available in JS and TSX
 ls.filetype_extend("javascript", { "typescript" })
+ls.filetype_extend("typescriptreact", { "typescript" })
 
 inoremap("<c-k>", function()
   if ls.expand_or_jumpable() then
