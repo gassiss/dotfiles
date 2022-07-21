@@ -27,6 +27,9 @@ Plug 'wellle/context.vim'
 Plug 'ellisonleao/gruvbox.nvim'
 
 " telescope
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 " harpoon
 " vim-qf
 " vim-fugitive
@@ -39,13 +42,6 @@ Plug 'airblade/vim-gitgutter'
 
 " netrw improvements
 Plug 'tpope/vim-vinegar'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" fzf config
-nnoremap <silent> <C-p> :FZF<CR>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.50, 'relative': v:true, 'yoffset': 1.0 } }
 
 call plug#end()
 
