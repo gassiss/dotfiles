@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { "lua", "go", "typescript", "javascript", "vim", "yaml", "scss", "python", "dockerfile" },
+    ensure_installed = { "lua", "go", "typescript", "javascript", "vim", "yaml", "scss", "python", "dockerfile", "c" },
     sync_install = false,
 
     highlight = {
