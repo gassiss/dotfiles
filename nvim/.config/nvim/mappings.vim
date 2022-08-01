@@ -47,8 +47,8 @@ vnoremap <leader>y "+y
 nnoremap <leader>Y "+yg_
 nnoremap <leader>yy "+yy
 
-nnoremap [f :cnext<CR>
-nnoremap ]f :cprev<CR>
+nnoremap ]f :cnext<CR>
+nnoremap [f :cprev<CR>
 nnoremap <leader>cc :cclose<CR>
 nnoremap <leader>co :copen<CR>
 
