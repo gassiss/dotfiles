@@ -1,0 +1,4 @@
+SRC += muse.c
+CAPS_WORD_ENABLE = yes
+RGBLIGHT_ENABLE = no
+AUDIO_ENABLE = no

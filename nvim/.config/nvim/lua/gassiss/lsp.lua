@@ -55,4 +55,4 @@ end
 require("lspconfig").tsserver.setup(config())
 -- npm i -g vscode-langservers-extracted
 require("lspconfig").eslint.setup{}
-
+require("lspconfig").gopls.setup{config()}

@@ -9,6 +9,8 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 nnoremap <Leader>w :w<CR>
 
+inoremap ., <ESC>
+
 " remaps Y to behave like D
 nnoremap Y y$
 
