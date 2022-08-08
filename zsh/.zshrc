@@ -98,6 +98,13 @@ zle -N fzf_history_search
 
 bindkey '^r' fzf_history_search
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin/
+
+ssht() {
+  ssh -N -L "${1}:localhost:${1}" box
+}
+
 # load zsh auto suggestions plugin
 # [ -d "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # bindkey '^k' autosuggest-accept

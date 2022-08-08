@@ -1,16 +1,15 @@
+const Main = imports.ui.main;
+const PanelBox = Main.layoutManager.panelBox;
 const WorkspaceSwitcherPopup = imports.ui.workspaceSwitcherPopup;
 const WorkspaceAnimation = imports.ui.workspaceAnimation;
 
-let oldShow;
 let oldAnimateSwitch;
 
-function init() {
-    oldShow = WorkspaceSwitcherPopup.WorkspaceSwitcherPopup.prototype._show;
-    oldAnimateSwitch = WorkspaceAnimation.WorkspaceAnimationController.prototype.animateSwitch;
-}
+function init() {}
 
 function enable() {
-    WorkspaceSwitcherPopup.WorkspaceSwitcherPopup.prototype._show = function() { return false };
+    oldAnimateSwitch = WorkspaceAnimation.WorkspaceAnimationController.prototype.animateSwitch;
+    oldPanelBoxHeight = PanelBox.height;
     WorkspaceAnimation.WorkspaceAnimationController.prototype.animateSwitch = function (
       _from,
       _to,
@@ -19,14 +18,16 @@ function enable() {
     ) {
       onComplete();
     };
+    PanelBox.ease({ y: PanelBox.y - PanelBox.height, onComplete: () => { PanelBox.hide() } });
+    Main.overview.connect('showing', () => { PanelBox.show(); PanelBox.ease({ y: 0 }) })
+    Main.overview.connect('hiding', () => {
+      PanelBox.ease({ y: PanelBox.y - PanelBox.height, onComplete: () => { PanelBox.hide() } });
+    })
 }
 
 function disable() {
-    WorkspaceSwitcherPopup.WorkspaceSwitcherPopup.prototype._show = oldShow;
-    WorkspaceAnimation.WorkspaceAnimationController.prototype.animateSwitch = this.oldAnimateSwitch;
+    WorkspaceAnimation.WorkspaceAnimationController.prototype.animateSwitch = oldAnimateSwitch;
+    PanelBox.show();
+    PanelBox.ease({ y: 0 });
 }
 
-// Backwards compatability with 3.0.2
-function main() {
-    enable();
-}
