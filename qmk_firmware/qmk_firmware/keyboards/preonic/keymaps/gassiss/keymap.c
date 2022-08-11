@@ -46,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,   KC_NO,   KC_NO,   KC_NO,   _______,  KC_NO,   OSM(MOD_LSFT),  KC_SPC,  KC_NO,   KC_NO,   KC_NO,   KC_NO
 ),
 [FUN] = LAYOUT_preonic_grid(
-  KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO, QK_BOOT,
-  _______, KC_F1, KC_F2,   KC_F3,   KC_F4,   KC_NO, KC_NO,   KC_MPRV, KC_MNXT, KC_NO, KC_NO, KC_NO,
-  _______, KC_F5, KC_F6,   KC_F7,   KC_F8,   KC_NO, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO, KC_NO, KC_NO,
-  _______, KC_F9, KC_F10,  KC_F11,  KC_F12,  KC_NO, KC_NO,   KC_MSTP, KC_MPLY, KC_NO, KC_NO, KC_NO,
-  KC_NO,   KC_NO, _______, _______, _______, KC_NO, KC_NO,   KC_NO,   _______, KC_NO, KC_NO, KC_NO
+  KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,   QK_BOOT,
+  _______, KC_F1, KC_F2,   KC_F3,   KC_F4,   KC_NO, KC_NO,   KC_MPRV, KC_MNXT, KC_NO, KC_NO,   KC_NO,
+  _______, KC_F5, KC_F6,   KC_F7,   KC_F8,   KC_NO, KC_MUTE, KC_VOLD, KC_VOLU, KC_NO, KC_NO,   KC_NO,
+  _______, KC_F9, KC_F10,  KC_F11,  KC_F12,  KC_NO, KC_NO,   KC_MSTP, KC_MPLY, KC_NO, KC_PSCR, KC_NO,
+  KC_NO,   KC_NO, _______, _______, _______, KC_NO, KC_NO,   KC_NO,   _______, KC_NO, KC_NO,   KC_NO
 )
 };
 

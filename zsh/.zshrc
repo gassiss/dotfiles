@@ -99,7 +99,7 @@ zle -N fzf_history_search
 bindkey '^r' fzf_history_search
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin/
+export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
 
 ssht() {
   ssh -N -L "${1}:localhost:${1}" box
