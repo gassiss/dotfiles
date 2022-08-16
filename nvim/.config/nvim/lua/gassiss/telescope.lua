@@ -4,14 +4,20 @@ local telescope = require("telescope.builtin")
 local vertical_layout = {layout_strategy="vertical",layout_config={width=0.85,preview_height=0.7}}
 
 require("telescope").setup {
-   pickers = {
-     live_grep = vertical_layout,
-     grep_string = vertical_layout,
-     lsp_references = vertical_layout,
-     lsp_definitions = vertical_layout,
-     lsp_type_definitions = vertical_layout,
-     lsp_implementations = vertical_layout,
-   }
+  defaults = {
+    file_ignore_patterns = { "^.git/" },
+  },
+  pickers = {
+    find_files = {
+      hidden = true,
+    },
+    live_grep = vertical_layout,
+    grep_string = vertical_layout,
+    lsp_references = vertical_layout,
+    lsp_definitions = vertical_layout,
+    lsp_type_definitions = vertical_layout,
+    lsp_implementations = vertical_layout,
+  }
 }
 require("telescope").load_extension("fzf")
 
@@ -27,5 +33,6 @@ nnoremap("<leader>fr", telescope.lsp_references)
 nnoremap("<leader>fd", telescope.lsp_definitions)
 nnoremap("<leader>ft", telescope.lsp_type_definitions)
 nnoremap("<leader>fi", telescope.lsp_implementations)
+nnoremap("<leader>fe", telescope.diagnostics)
+nnoremap("<leader>fq", function () telescope.diagnostics({ bufnr = 0 }) end)
 
--- diagnostics (can make this current buffer only. Change layout)
