@@ -24,5 +24,6 @@ set noshowmode
 set completeopt=menu,menuone,noselect
 set updatetime=50
 set laststatus=3
-
+set colorcolumn=100
+set nohlsearch
 
