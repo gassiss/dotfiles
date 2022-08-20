@@ -35,6 +35,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " vim-fugitive
 " notes workflow: ?
 " debugging workflow: nvim-dap, dap-ui, dap text
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
 " db workflow: dadbod, dadbod-ui, dadbod comp
 
 Plug 'nvim-lualine/lualine.nvim'
@@ -72,10 +75,17 @@ let g:context_enabled = 0
 nnoremap <silent> <leader>ct <cmd>ContextToggleWindow<CR>
 
 lua << END
+local function debug()
+  return require'dap'.status()
+end
 require('lualine').setup({
   options = {
     theme = 'gruvbox',
     icons_enabled = false,
-  }
+  },
+  sections = {
+    lualine_x = {debug},
+    lualine_y = {'hostname'},
+  },
 })
 END
