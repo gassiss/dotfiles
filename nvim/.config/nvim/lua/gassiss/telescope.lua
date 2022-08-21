@@ -34,5 +34,6 @@ nnoremap("<leader>fd", telescope.lsp_definitions)
 nnoremap("<leader>ft", telescope.lsp_type_definitions)
 nnoremap("<leader>fi", telescope.lsp_implementations)
 nnoremap("<leader>fe", telescope.diagnostics)
-nnoremap("<leader>fq", function () telescope.diagnostics({ bufnr = 0 }) end)
+nnoremap("<leader>fq", telescope.quickfix)
+-- nnoremap("<leader>fq", function () telescope.diagnostics({ bufnr = 0 }) end)
 

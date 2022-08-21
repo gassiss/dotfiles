@@ -12,7 +12,6 @@ set splitbelow
 set splitright
 set number relativenumber
 set numberwidth=2
-set exrc
 set nowrap
 set path+=**
 set wildignorecase
