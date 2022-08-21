@@ -21,7 +21,7 @@ GITBRANCH=$'$(vcs_info_wrapper)'
 # %~ expands to current dir
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
-RPROMPT="$GITBRANCH$USER@$HOST"
+# RPROMPT="$GITBRANCH$USER@$HOST"
 
 # History stuff
 export HISTSIZE=1000000
