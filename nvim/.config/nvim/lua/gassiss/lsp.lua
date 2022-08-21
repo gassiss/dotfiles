@@ -34,24 +34,55 @@ cmp.setup.cmdline(':', {
 	})
 })
 
-local function config(opts)
+local function config(_opts)
+    local opts = _opts or {}
 		return vim.tbl_deep_extend("force", {
 			capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 			on_attach = function()
-				nnoremap("gd", function() vim.lsp.buf.definition() end)
-				nnoremap("gt", function() vim.lsp.buf.type_definition() end)
-				nnoremap("grr", function() vim.lsp.buf.references() end)
-				nnoremap("grn", function() vim.lsp.buf.rename() end)
-				nnoremap("K", function() vim.lsp.buf.hover() end)
-				inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
-				nnoremap("[d", function() vim.diagnostic.goto_prev() end)
-				nnoremap("]d", function() vim.diagnostic.goto_next() end)
-				nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
+				nnoremap("gd", vim.lsp.buf.definition)
+				nnoremap("gt", vim.lsp.buf.type_definition)
+				nnoremap("grr", vim.lsp.buf.references)
+				nnoremap("grn", vim.lsp.buf.rename)
+				nnoremap("K", vim.lsp.buf.hover)
+				inoremap("<C-h>", vim.lsp.buf.signature_help)
+				nnoremap("[d", vim.diagnostic.goto_prev)
+				nnoremap("]d", vim.diagnostic.goto_next)
+				nnoremap("<leader>vd", vim.diagnostic.open_float)
+
+        -- hack to enable formatting for typescript/javascript using prettier
+        if opts["format"] then
+          local function formatter()
+            if vim.api.nvim_exec("echo &modified", true) == "1" then
+              print("Save the buffer before formatting dumbass")
+              return
+            end
+            opts.format()
+            -- vim.api.nvim_command("write")
+          end
+
+          nnoremap("<leader>%", formatter)
+        else
+          nnoremap("<leader>%", vim.lsp.buf.formatting_sync)
+        end
+
 			end,
-	}, opts or {})
+	}, opts)
 end
 
-require("lspconfig").tsserver.setup(config())
+require("lspconfig").tsserver.setup(config({
+  format = function() vim.api.nvim_command("silent !yarn prettier --write %") end,
+}))
 require("lspconfig").eslint.setup{}
-require("lspconfig").gopls.setup(config())
+require("lspconfig").gopls.setup(config({
+	cmd = { "gopls", "serve" },
+	settings = {
+		gopls = {
+			analyses = {
+        unreachable = true,
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+}))
 require("lspconfig").pylsp.setup{}
