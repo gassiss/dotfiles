@@ -57,6 +57,8 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+" Delete without sending to register
+vnoremap <leader>d "_d
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
@@ -65,3 +67,6 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-w><C-n> :tabnew %<CR>
 nnoremap <C-w><C-y> gT
 nnoremap <C-w><C-u> gt
+
+" buffer things
+nnoremap <BS> <c-^>

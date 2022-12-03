@@ -45,6 +45,9 @@ Plug 'lewis6991/gitsigns.nvim'
 " netrw improvements
 Plug 'tpope/vim-vinegar'
 
+Plug 'google/vim-jsonnet'
+Plug 'ojrogues/vim-oscyank'
+
 call plug#end()
 
 " fixes colors

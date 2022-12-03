@@ -86,3 +86,7 @@ require("lspconfig").gopls.setup(config({
 	},
 }))
 require("lspconfig").pylsp.setup{}
+require("lspconfig").rust_analyzer.setup(config({
+  cmd = { "rustup", "run", "nightly", "rust-analyzer" }
+}))
+require("lspconfig").jsonnet_ls.setup(config())

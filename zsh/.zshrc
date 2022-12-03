@@ -2,9 +2,9 @@
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
-    '%F{3}(%f%F{1}%b%F{3}|%F{1}%a%F{3})%f '
+    '%F{3}(%f%F{1}%b%F{3}|%F{1}%a%F{3})%f'
 zstyle ':vcs_info:*' formats       \
-    '%F{3}(%f%F{1}%b%F{3})%f '
+    '%F{3}(%f%F{1}%b%F{3})%f'
 zstyle ':vcs_info:*' enable git
 
 vcs_info_wrapper() {
@@ -20,7 +20,7 @@ GITBRANCH=$'$(vcs_info_wrapper)'
 # %{} expands to set color
 # %~ expands to current dir
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$GITBRANCH$%b "
 # RPROMPT="$GITBRANCH$USER@$HOST"
 
 # History stuff
@@ -104,6 +104,18 @@ export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
 ssht() {
   ssh -N -L "${1}:localhost:${1}" box
 }
+
+# passes !! to watch -n1
+w!() {
+  lastcmd=$(fc -l -1)
+  watch -n1 "${(z)${lastcmd#*  }}"
+}
+zle -N w!
+bindkey '^[?' w!
+
+# expand alias with TAB
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+zstyle ':completion:*' regular true
 
 # load zsh auto suggestions plugin
 # [ -d "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
