@@ -4,6 +4,7 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set scrolloff=5
+set sidescrolloff=20
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable

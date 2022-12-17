@@ -1,6 +1,10 @@
 " jumping keeps buffer centered
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap # #zz
+nnoremap * *zz
 
 " replace highlighted text
 vnoremap <leader>s "hy:%s/<C-r>h//c<left><left>
