@@ -102,7 +102,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
 
 ssht() {
-  ssh -N -L "${1}:localhost:${1}" box
+  ssh -N -L "${1}:localhost:${1}" work
 }
 
 # passes !! to watch -n1
