@@ -48,6 +48,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'google/vim-jsonnet'
 Plug 'ojrogues/vim-oscyank'
 
+Plug 'ThePrimeagen/harpoon'
+
 call plug#end()
 
 " fixes colors
