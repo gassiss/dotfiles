@@ -56,7 +56,7 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-    config = function(plugin, opts)
+    config = function(_, opts)
       local ls = require("luasnip")
       ls.setup(opts)
 
@@ -65,8 +65,8 @@ return {
       ls.filetype_extend("javascript", { "typescript" })
       ls.filetype_extend("typescriptreact", { "typescript" })
 
-      local function map(mode, l, r, opts)
-        vim.keymap.set(mode, l, r, opts)
+      local function map(mode, l, r, optss)
+        vim.keymap.set(mode, l, r, optss)
       end
 
       map("i", "<c-k>", function()
@@ -113,17 +113,14 @@ return {
         -- does git reset in the buffer
         map("n", "<leader>hU", gs.reset_buffer_index, "Reset buffer index")
         map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
-        map("n", "<leader>hb", function()
-          gs.blame_line({ full = true })
-        end, "Blame line")
+        -- stylua: ignore
+        map("n", "<leader>hl", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle current line blame")
-        map("n", "<leader>hd", function()
-          gs.diffthis("~")
-        end, "Diff this")
-        map("n", "<leader>ha", function()
-          gs.setqflist("all")
-        end)
-        map("n", "<leader>hb", gs.setqflist)
+        -- stylua: ignore
+        map("n", "<leader>hd", function() gs.diffthis("~") end, "Diff this")
+        -- stylua: ignore
+        map("n", "<leader>ha", function() gs.setqflist("all") end, "GitSigns: Add all changes to Qfix")
+        map("n", "<leader>hb", gs.setqflist, "Gitsigns: Add current buffer changes to Qfix")
       end,
     },
   },

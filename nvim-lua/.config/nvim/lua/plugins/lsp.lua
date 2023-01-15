@@ -16,22 +16,7 @@ local function config(_opts)
       map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
       map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
       map("n", "<leader>vd", vim.diagnostic.open_float, "Open float")
-
-      -- -- hack to enable formatting for typescript/javascript using prettier
-      -- if opts["format"] then
-      --   local function formatter()
-      --     if vim.api.nvim_exec("echo &modified", true) == "1" then
-      --       print("Save the buffer before formatting dumbass")
-      --       return
-      --     end
-      --     opts.format()
-      --     -- vim.api.nvim_command("write")
-      --   end
-
-      --   map('n', "<leader>%", formatter, 'Format file')
-      -- else
       map("n", "<leader>%", vim.lsp.buf.format, "Format file")
-      -- end
     end,
   }, opts)
 end

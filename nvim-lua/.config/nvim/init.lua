@@ -4,11 +4,9 @@ require("config.autocmd")
 require("config.lazy")
 
 -- missing from old config:
--- formatters (manual ones)
 -- dap
 --
 -- todo:
--- install formatters and shit (null-ls)
 -- revamp some keybinds
 -- * ensure most used (current) ones are either control + key or leader + key
 -- * add format keybind w/ range too
