@@ -5,8 +5,6 @@ require("config.lazy")
 
 -- missing from old config:
 -- formatters (manual ones)
--- move snippets here
--- fix treesitter-context
 -- dap
 --
 -- todo:

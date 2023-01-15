@@ -61,7 +61,7 @@ return {
       ls.setup(opts)
 
       require('luasnip.loaders.from_lua').lazy_load(
-        { paths = '~/.dotfiles/nvim/.config/nvim/lua/gassiss/snippets' }
+        { paths = '~/.config/nvim/lua/config/snippets' }
       )
 
       ls.filetype_extend('javascript', { 'typescript' })
