@@ -26,10 +26,10 @@ vim.keymap.set("n", "<silent> <a-_> :resize", "-5<CR>")
 vim.keymap.set("n", "<silent> <a-+> :resize", "+5<CR>")
 
 -- Copy to system clipboard
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+yg_")
-vim.keymap.set("n", "<leader>yy", "\"+yy")
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+yg_')
+vim.keymap.set("n", "<leader>yy", '"+yy')
 
 vim.keymap.set("n", "]f", ":cnext<CR>")
 vim.keymap.set("n", "[f", ":cprev<CR>")
@@ -37,12 +37,12 @@ vim.keymap.set("n", "<leader>cc", ":cclose<CR>")
 vim.keymap.set("n", "<leader>co", ":copen<CR>")
 
 -- Paste from system clipboard
-vim.keymap.set("n", "<leader>p", "\"+p")
-vim.keymap.set("n", "<leader>P", "\"+P")
-vim.keymap.set("v", "<leader>p", "\"+p")
-vim.keymap.set("v", "<leader>P", "\"+P")
+vim.keymap.set("n", "<leader>p", '"+p')
+vim.keymap.set("n", "<leader>P", '"+P')
+vim.keymap.set("v", "<leader>p", '"+p')
+vim.keymap.set("v", "<leader>P", '"+P')
 -- Delete without sending to register
-vim.keymap.set("v", "<leader>d", "\"_d")
+vim.keymap.set("v", "<leader>d", '"_d')
 
 vim.keymap.set("v", "J :m", "'>+1<CR>gv=gv")
 vim.keymap.set("v", "K :m", "'<-2<CR>gv=gv")

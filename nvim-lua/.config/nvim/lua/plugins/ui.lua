@@ -1,15 +1,15 @@
 return {
   {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     opts = {
       options = {
-        theme = 'gruvbox',
+        theme = "gruvbox",
         icons_enabled = false,
       },
       sections = {
-        lualine_y = {'hostname'},
+        lualine_y = { "hostname" },
       },
-    }
+    },
   },
 }
