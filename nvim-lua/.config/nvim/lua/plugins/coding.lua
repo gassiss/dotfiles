@@ -113,14 +113,12 @@ return {
         -- does git reset in the buffer
         map("n", "<leader>hU", gs.reset_buffer_index, "Reset buffer index")
         map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
-        -- stylua: ignore
-        map("n", "<leader>hl", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle current line blame")
-        -- stylua: ignore
+        -- stylua: ignore start
+        map("n", "<leader>hl", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>hd", function() gs.diffthis("~") end, "Diff this")
-        -- stylua: ignore
-        map("n", "<leader>ha", function() gs.setqflist("all") end, "GitSigns: Add all changes to Qfix")
-        map("n", "<leader>hb", gs.setqflist, "Gitsigns: Add current buffer changes to Qfix")
+        map("n", "<leader>ha", function() gs.setqflist("all") end, "Add all changes to Qfix")
+        map("n", "<leader>hb", gs.setqflist, "Add current buffer changes to Qfix")
       end,
     },
   },

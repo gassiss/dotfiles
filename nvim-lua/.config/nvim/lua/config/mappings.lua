@@ -8,7 +8,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "#", "#zz")
 vim.keymap.set("n", "*", "*zz")
 
-vim.keymap.set("n", "<Leader>w", ":w<CR>")
+vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "Save file" })
 
 -- remaps Y to behave like D
 vim.keymap.set("n", "Y", "y$")
@@ -31,10 +31,10 @@ vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+yg_')
 vim.keymap.set("n", "<leader>yy", '"+yy')
 
-vim.keymap.set("n", "]f", ":cnext<CR>")
-vim.keymap.set("n", "[f", ":cprev<CR>")
-vim.keymap.set("n", "<leader>cc", ":cclose<CR>")
-vim.keymap.set("n", "<leader>co", ":copen<CR>")
+vim.keymap.set("n", "]f", ":cnext<CR>", { desc = "Next in quick fix" })
+vim.keymap.set("n", "[f", ":cprev<CR>", { desc = "Prev in quick fix" })
+vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quick fix" })
+vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Open quick fix" })
 
 -- Paste from system clipboard
 vim.keymap.set("n", "<leader>p", '"+p')

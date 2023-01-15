@@ -15,7 +15,6 @@ require("config.lazy")
 -- * learn more about snippets (long effort)
 -- * setup dap (long effort)
 -- interesting plugins to maybe use:
--- * which-key -> shows some cool ui with keybind as you type them. Also lets you peek registers and shit
 -- * leap -> allows to reach places with less keystrokes
 -- * RRethy/vim-illuminate -> highlights symbols like vscode
 -- * folke/trouble.nvim -> cool diagnostics window
