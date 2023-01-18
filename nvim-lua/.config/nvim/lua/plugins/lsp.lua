@@ -15,8 +15,9 @@ local function config(_opts)
       map("i", "<C-h>", vim.lsp.buf.signature_help, "Show signature help")
       map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
       map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
-      map("n", "<leader>vd", vim.diagnostic.open_float, "Open float")
-      map("n", "<leader>%", vim.lsp.buf.format, "Format file")
+      map("n", "<leader>l", vim.diagnostic.open_float, "Open float")
+      map("n", "<leader>&", vim.lsp.buf.format, "Format file")
+      map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
     end,
   }, opts)
 end
@@ -35,6 +36,7 @@ return {
         "eslint",
         "rust_analyzer@nightly",
         "sumneko_lua",
+        "marksman",
       },
       automatic_installation = false,
     },
@@ -48,6 +50,7 @@ return {
       require("lspconfig").pylsp.setup(config())
       require("lspconfig").gopls.setup(config())
       require("lspconfig").rust_analyzer.setup(config())
+      require("lspconfig").marksman.setup(config())
       require("lspconfig").sumneko_lua.setup(config({
         settings = {
           Lua = {

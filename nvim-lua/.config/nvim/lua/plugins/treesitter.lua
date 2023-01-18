@@ -20,6 +20,8 @@ return {
           "json",
           "norg",
           "yaml",
+          "markdown",
+          "markdown_inline",
         },
         sync_install = false,
         auto_install = false,

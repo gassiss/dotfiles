@@ -113,7 +113,7 @@ return {
         -- does git reset in the buffer
         map("n", "<leader>hU", gs.reset_buffer_index, "Reset buffer index")
         map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
-        map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle current line blame")
+        map("n", "<leader>ht", gs.toggle_current_line_blame, "Toggle current line blame")
         -- stylua: ignore start
         map("n", "<leader>hl", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>hd", function() gs.diffthis("~") end, "Diff this")
