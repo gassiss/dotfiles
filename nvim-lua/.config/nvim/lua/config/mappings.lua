@@ -44,8 +44,8 @@ vim.keymap.set("v", "<leader>P", '"+P')
 -- Delete without sending to register
 vim.keymap.set("v", "<leader>d", '"_d')
 
-vim.keymap.set("v", "J :m", "'>+1<CR>gv=gv")
-vim.keymap.set("v", "K :m", "'<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- tabs
 vim.keymap.set("n", "<C-w><C-n> :tabnew", "%<CR>")
