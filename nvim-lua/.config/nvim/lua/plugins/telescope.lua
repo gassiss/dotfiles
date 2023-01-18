@@ -12,7 +12,7 @@ return {
       { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
       { "<leader>h", "<cmd>Telescope builtin<cr>", desc = "Telescope builtin" },
       { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-      { "<leader>w", "<cmd>Telescope grep_string<cr>", desc = "Grep string under cursor" },
+      { "<leader>p", "<cmd>Telescope grep_string<cr>", desc = "Grep string under cursor" },
       { "<leader>r", "<cmd>Telescope lsp_references<cr>", desc = "Find references" },
       { "<leader>d", "<cmd>Telescope lsp_definitions<cr>", desc = "Find definitions" },
       { "<leader>t", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Find type definitions" },
