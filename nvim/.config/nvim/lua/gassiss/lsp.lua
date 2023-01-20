@@ -47,7 +47,7 @@ local function config(_opts)
 				inoremap("<C-h>", vim.lsp.buf.signature_help)
 				nnoremap("[d", vim.diagnostic.goto_prev)
 				nnoremap("]d", vim.diagnostic.goto_next)
-				nnoremap("<leader>vd", vim.diagnostic.open_float)
+				nnoremap("<leader>l", vim.diagnostic.open_float)
 
         -- hack to enable formatting for typescript/javascript using prettier
         if opts["format"] then

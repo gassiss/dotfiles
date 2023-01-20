@@ -9,7 +9,6 @@ require("config.lazy")
 -- todo:
 -- revamp some keybinds
 -- * ensure most used (current) ones are either control + key or leader + key
--- * (new) treesitter keybinds
 -- * telescope: grep (and find reference if possible) from current dir
 -- * learn more about snippets (long effort)
 -- * setup dap (long effort)
