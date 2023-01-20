@@ -1,5 +1,5 @@
 local vertical_layout =
-  { layout_strategy = "vertical", layout_config = { width = 0.85, preview_height = 0.7 } }
+{ layout_strategy = "vertical", layout_config = { width = 0.85, preview_height = 0.7 } }
 
 -- stylua: ignore start
 return {
@@ -9,9 +9,15 @@ return {
     cmd = "Telescope",
     keys = {
       { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { "<leader>F", function()
+        require('telescope.builtin').find_files({ cwd = vim.fn.expand("%:p:h") })
+      end, desc = "Search file under dir" },
       { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
       { "<leader>u", "<cmd>Telescope builtin<cr>", desc = "Telescope builtin" },
       { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+      { "<leader>G", function()
+        require('telescope.builtin').live_grep({ cwd = vim.fn.expand("%:p:h") })
+      end, desc = "Live grep under dir" },
       { "<leader>p", "<cmd>Telescope grep_string<cr>", desc = "Grep string under cursor" },
       { "<leader>r", "<cmd>Telescope lsp_references<cr>", desc = "Find references" },
       { "<leader>d", "<cmd>Telescope lsp_definitions<cr>", desc = "Find definitions" },
