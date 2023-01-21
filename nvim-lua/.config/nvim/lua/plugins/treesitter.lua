@@ -41,7 +41,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPost",
+    keys = {
+      { '<leader>ct', '<cmd>TSContextEnable<cr>', desc = "TSContext Toggle" },
+    },
     opts = {
       max_lines = 5,
     },
