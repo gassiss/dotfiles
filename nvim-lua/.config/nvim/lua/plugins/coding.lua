@@ -119,7 +119,28 @@ return {
         map("n", "<leader>hd", function() gs.diffthis("~") end, "Diff this")
         map("n", "<leader>ha", function() gs.setqflist("all") end, "Add all changes to Qfix")
         map("n", "<leader>hb", gs.setqflist, "Add current buffer changes to Qfix")
+        -- stylua: ignore end
       end,
     },
+  },
+
+  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  {
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+      mappings = {
+        comment_line = '<leader>o',
+        comment = '<leader>o',
+      },
+      hooks = {
+        pre = function()
+          require("ts_context_commentstring.internal").update_commentstring({})
+        end,
+      },
+    },
+    config = function(_, opts)
+        require("mini.comment").setup(opts)
+    end,
   },
 }
