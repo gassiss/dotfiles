@@ -28,6 +28,5 @@ require("lazy").setup("plugins", {
       task = "📌",
     },
   },
-  -- defaults = { lazy = true },
   performance = { cache = { enabled = true } },
 })

@@ -54,7 +54,7 @@ return {
     event = "InsertEnter",
     opts = {
       history = true,
-      delete_check_events = "TextChanged",
+      delete_check_events = "TextChanged,TextChangedI",
     },
     config = function(_, opts)
       local ls = require("luasnip")
@@ -86,6 +86,16 @@ return {
           ls.change_choice(1)
         end
       end, { silent = true })
+
+      map("n", "<leader><leader>s", function()
+        require("luasnip.loaders.from_lua").lazy_load({
+          paths = "~/.config/nvim/lua/config/snippets",
+        })
+      end)
+
+      map("n", "<leader><leader>e", function()
+        require('luasnip.loaders').edit_snippet_files()
+      end)
     end,
   },
 
@@ -130,8 +140,8 @@ return {
     event = "VeryLazy",
     opts = {
       mappings = {
-        comment_line = '<leader>o',
-        comment = '<leader>o',
+        comment_line = "<leader>o",
+        comment = "<leader>o",
       },
       hooks = {
         pre = function()
@@ -140,7 +150,7 @@ return {
       },
     },
     config = function(_, opts)
-        require("mini.comment").setup(opts)
+      require("mini.comment").setup(opts)
     end,
   },
 }
