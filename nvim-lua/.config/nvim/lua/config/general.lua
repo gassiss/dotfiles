@@ -17,7 +17,6 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.showmode = false
 vim.g.netrw_banner = false
 vim.g.netrw_keepdir = 1
 vim.opt.signcolumn = "yes"
