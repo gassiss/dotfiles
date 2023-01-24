@@ -12,4 +12,12 @@ return {
     'stevearc/dressing.nvim',
     event = "BufReadPre",
   },
+  {
+    "folke/zen-mode.nvim",
+    keys = {
+      { '<leader>z', '<cmd>ZenMode<cr>', desc = "Toggle Zen mode" },
+    },
+    opts = {
+    }
+  }
 }

@@ -20,7 +20,7 @@ vim.opt.splitright = true
 vim.g.netrw_banner = false
 vim.g.netrw_keepdir = 1
 vim.opt.signcolumn = "yes"
-vim.cmd[[set laststatus=3]]
+-- vim.cmd[[set laststatus=3]]
 
 -- stuff i don't know i'll need
 -- set signcolumn=yes
