@@ -1,7 +1,0 @@
-require("gassiss.lsp")
-require("gassiss.treesitter")
-require("gassiss.luasnip")
-require("gassiss.telescope")
-require("gassiss.dap")
-require("gassiss.gitsigns")
-require("gassiss.harpoon")
