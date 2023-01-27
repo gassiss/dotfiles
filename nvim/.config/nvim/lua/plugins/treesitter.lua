@@ -22,6 +22,8 @@ return {
           "yaml",
           "markdown",
           "markdown_inline",
+          "fish",
+          "jsonnet",
         },
         sync_install = false,
         auto_install = false,
