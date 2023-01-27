@@ -21,3 +21,15 @@
 	conflictstyle = diff3
 [diff]
 	colorMoved = default
+[alias]
+  s = status
+  w = worktree
+  l = log --graph --oneline --decorate
+  p = push
+  c = commit
+  cn = commit --no-verify
+  co = checkout
+  a = add
+  r = rebase
+  rc = rebase --continue
+  ra = rebase --abort

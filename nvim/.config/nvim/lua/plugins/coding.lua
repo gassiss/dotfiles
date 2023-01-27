@@ -134,6 +134,11 @@ return {
     },
   },
 
+  {
+    "tpope/vim-fugitive",
+    event = "VeryLazy",
+  },
+
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
     "echasnovski/mini.comment",
