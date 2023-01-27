@@ -27,6 +27,13 @@ return {
     opts = {
       defaults = {
         file_ignore_patterns = { "^.git/" },
+        mappings = {
+          i = {
+            ['<C-q>'] = 'smart_add_to_qflist',
+            ['<up>'] = 'cycle_history_prev',
+            ['<down>'] = 'cycle_history_next',
+          },
+        },
       },
       pickers = {
         find_files = { hidden = true },
