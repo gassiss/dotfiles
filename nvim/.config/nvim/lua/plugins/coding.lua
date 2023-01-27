@@ -127,7 +127,7 @@ return {
         -- stylua: ignore start
         map("n", "<leader>hl", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>hd", function() gs.diffthis("~") end, "Diff this")
-        map("n", "<leader>ha", function() gs.setqflist("all") end, "Add all changes to Qfix")
+        map("n", "<leader>ha", function() gs.setqflist("all", { open = false }) end, "Add all changes to Qfix")
         map("n", "<leader>hb", gs.setqflist, "Add current buffer changes to Qfix")
         -- stylua: ignore end
       end,
