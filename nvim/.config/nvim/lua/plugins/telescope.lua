@@ -23,6 +23,7 @@ return {
       { "<leader>d", "<cmd>Telescope lsp_definitions<cr>", desc = "Find definitions" },
       { "<leader>t", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Find type definitions" },
       { "<leader>i", "<cmd>Telescope lsp_implementations<cr>", desc = "Find implementations" },
+      { "<leader>x", "<cmd>Telescope resume<cr>", desc = "Reopen last telescope search" },
     },
     opts = {
       defaults = {
@@ -32,11 +33,12 @@ return {
             ['<C-q>'] = 'smart_add_to_qflist',
             ['<up>'] = 'cycle_history_prev',
             ['<down>'] = 'cycle_history_next',
+            ['<C-e>'] = function(args) require('telescope.actions.layout').toggle_preview(args) end,
           },
         },
       },
       pickers = {
-        find_files = { hidden = true },
+        find_files = { hidden = true, previewer = false },
         live_grep = vertical_layout,
         grep_string = vertical_layout,
         lsp_references = vertical_layout,

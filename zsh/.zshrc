@@ -15,6 +15,15 @@ vcs_info_wrapper() {
 }
 GITBRANCH=$'$(vcs_info_wrapper)'
 
+tw_get_context() {
+  task _get rc.context
+}
+TW_CONTEXT=$'$(tw_get_context)'
+tw_get_inbox_count() {
+  task +in +PENDING count
+}
+TW_INBOX_COUNT=$'$(tw_get_inbox_count)'
+
 # Enable colors and change prompt. Explanation of the cryptic string:
 # %B %b starts and resets bold
 # %{} expands to set color
@@ -112,6 +121,22 @@ bindkey '^[?' w!
 # expand alias with TAB
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
+
+in() {
+  if [ $# = 0 ]; then
+    task in
+  else
+    task add +in $@
+  fi
+}
+
+tick () {
+  deadline=$1
+  shift
+  in +tickle wait:$deadline $@
+}
+
+alias think="tick +1d"
 
 # load zsh auto suggestions plugin
 # [ -d "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
