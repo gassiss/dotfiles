@@ -7,6 +7,7 @@ local function config(_opts)
         vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
       end
 
+      map("n", "grd", function () vim.diagnostic.setqflist({ open = false }) end, "Show diagnostic of current buffer in QFlist")
       map("n", "gd", vim.lsp.buf.definition, "Go to definition")
       map("n", "gt", vim.lsp.buf.type_definition, "Go to type definiton")
       map("n", "grr", vim.lsp.buf.references, "References in quickfix list")
@@ -36,7 +37,7 @@ return {
         "eslint",
         "rust_analyzer@nightly",
         "sumneko_lua",
-        "marksman",
+        -- "marksman",
       },
       automatic_installation = false,
     },
@@ -50,7 +51,7 @@ return {
       require("lspconfig").pylsp.setup(config())
       require("lspconfig").gopls.setup(config())
       require("lspconfig").rust_analyzer.setup(config())
-      require("lspconfig").marksman.setup(config())
+      -- require("lspconfig").marksman.setup(config())
       require("lspconfig").sumneko_lua.setup(config({
         settings = {
           Lua = {
@@ -60,6 +61,24 @@ return {
           },
         },
       }))
+
+      local function location_handler(_, result, ctx)
+        local util = require("vim.lsp.util")
+
+        if not result or vim.tbl_isempty(result) then
+          vim.notify("No references found")
+        else
+          local client = vim.lsp.get_client_by_id(ctx.client_id)
+          config = config or {}
+          vim.fn.setqflist({}, " ", {
+            title = "References",
+            items = util.locations_to_items(result, client.offset_encoding),
+            context = ctx,
+          })
+        end
+      end
+
+      vim.lsp.handlers["textDocument/references"] = location_handler
     end,
   },
   {

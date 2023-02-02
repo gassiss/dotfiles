@@ -1,5 +1,5 @@
 local vertical_layout =
-{ layout_strategy = "vertical", layout_config = { width = 0.85, preview_height = 0.7 } }
+  { layout_strategy = "vertical", layout_config = { width = 0.85, preview_height = 0.7 } }
 
 -- stylua: ignore start
 return {
@@ -30,7 +30,7 @@ return {
         file_ignore_patterns = { "^.git/" },
         mappings = {
           i = {
-            ['<C-q>'] = 'smart_add_to_qflist',
+            ['<C-q>'] = 'send_to_qflist',
             ['<up>'] = 'cycle_history_prev',
             ['<down>'] = 'cycle_history_next',
             ['<C-e>'] = function(args) require('telescope.actions.layout').toggle_preview(args) end,

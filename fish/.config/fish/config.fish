@@ -3,6 +3,7 @@ if not status is-interactive
 end
 
 set -gx fish_greeting ''
+set -gx EDITOR nvim
 
 set hydro_color_pwd $fish_color_cwd
 set hydro_color_git $fish_color_quote
