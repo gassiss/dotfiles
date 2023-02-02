@@ -7,6 +7,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "#", "#zz")
 vim.keymap.set("n", "*", "*zz")
+vim.keymap.set("n", "<C-o>", "<C-o>zz")
+vim.keymap.set("n", "<C-i>", "<C-i>zz")
 
 vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "Save file" })
 
@@ -31,8 +33,8 @@ vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+yg_')
 vim.keymap.set("n", "<leader>yy", '"+yy')
 
-vim.keymap.set("n", "<c-j>", ":cnext<CR>", { desc = "Next in quick fix" })
-vim.keymap.set("n", "<c-k>", ":cprev<CR>", { desc = "Prev in quick fix" })
+vim.keymap.set("n", "<c-j>", ":cnext<CR>zz", { desc = "Next in quick fix" })
+vim.keymap.set("n", "<c-k>", ":cprev<CR>zz", { desc = "Prev in quick fix" })
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quick fix" })
 vim.keymap.set("n", "<leader>co", ":copen 5<CR>", { desc = "Open quick fix" })
 

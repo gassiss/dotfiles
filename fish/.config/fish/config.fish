@@ -19,6 +19,7 @@ abbr gca git rebase --abort
 abbr ga git add
 abbr gd git diff
 abbr gdc git diff --cached
+abbr gco git checkout
 
 fzf_configure_bindings --directory=\cf --variables=\e\cv
 bind \co __fish_preview_current_file         # c-o

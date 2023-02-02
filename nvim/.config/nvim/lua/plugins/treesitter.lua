@@ -27,8 +27,13 @@ return {
         },
         sync_install = false,
         auto_install = false,
-        highlight = { enable = true, additional_vim_regex_highlighting = false },
-        indent = { enable = true },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+          disable = function (_, bufnr)
+            return vim.api.nvim_buf_line_count(bufnr) > 2000
+          end
+        },
         incremental_selection = {
           enable = true,
           keymaps = {
