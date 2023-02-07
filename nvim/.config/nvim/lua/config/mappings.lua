@@ -10,6 +10,9 @@ vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 vim.keymap.set("n", "<C-i>", "<C-i>zz")
 
+vim.keymap.set("n", "{", "[", { remap = true })
+vim.keymap.set("n", "}", "]", { remap = true })
+
 vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "Save file" })
 
 -- remaps Y to behave like D
