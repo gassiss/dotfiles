@@ -138,6 +138,9 @@ return {
   {
     "tpope/vim-fugitive",
     event = "VeryLazy",
+    config = function ()
+      vim.keymap.set("n", "<leader>hi", "<cmd>G<cr>", { desc = "Open Fugitive" })
+    end
   },
 
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
