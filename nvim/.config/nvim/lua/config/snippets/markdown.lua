@@ -11,7 +11,7 @@ return {
   s(
     "now",
     f(function()
-      return os.date("%D - %H:%M")
+      return os.date("%A %b %d %H:%M")
     end)
   ),
 }

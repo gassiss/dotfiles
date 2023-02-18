@@ -13,6 +13,10 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "{", "[", { remap = true })
 vim.keymap.set("n", "}", "]", { remap = true })
 
+vim.keymap.set({ "n", "v" }, "&", "%")
+vim.keymap.set({ "n", "v" }, "-", "_")
+vim.keymap.set({ "n", "v" }, "_", "-")
+
 vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "Save file" })
 
 -- remaps Y to behave like D
@@ -69,4 +73,4 @@ vim.keymap.set("n", "<C-,><C-y>", "gt")
 -- buffer things
 vim.keymap.set("n", "<BS>", "<c-^>")
 
-vim.keymap.set("n", "-", "<cmd>Ex<cr>")
+vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
