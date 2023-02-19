@@ -7,6 +7,9 @@ set -gx EDITOR nvim
 
 set hydro_color_pwd $fish_color_cwd
 set hydro_color_git $fish_color_quote
+set -g hydro_symbol_git_dirty ''
+set -g hydro_symbol_git_ahead ''
+set -g hydro_symbol_git_behind ''
 
 abbr g git
 abbr gc git commit
@@ -32,5 +35,8 @@ bind \e\[1\;5B history-token-search-forward  # c-down
 bind \ch __fish_man_page                     # c-h
 bind \e\ce edit_command_buffer               # a-c-e
 bind \cg yank-pop                            # c-g
-#bind \cH backward-kill-word                  # c-h
 bind \e\cl __fish_list_current_token         # a-c-l
+
+if test -f $HOME/grafana.fish
+  source $HOME/grafana.fish
+end
