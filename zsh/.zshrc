@@ -68,27 +68,7 @@ bindkey '^[e' edit-command-line
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 
 export FZF_DEFAULT_COMMAND='rg --files'
-
-# load zsh history fzf plugin
-# credits: https://github.com/joshskidmore/zsh-fzf-history-search
-fzf_history_search() {
-  setopt extendedglob
-  candidates=(${(f)"$(fc -li -1 0 | fzf +s +m -x -e -q "$BUFFER")"})
-  local ret=$?
-  if [ -n "$candidates" ]; then
-    BUFFER="${candidates[@]/(#m)*/${${(As: :)MATCH}[4,-1]}}"
-    BUFFER="${BUFFER[@]/(#b)(?)\\n/$match[1]
-}"
-    zle vi-fetch-history -n $BUFFER
-  fi
-  zle reset-prompt
-  return $ret
-}
-
-autoload fzf_history_search
-zle -N fzf_history_search
-
-bindkey '^r' fzf_history_search
+export FZF_DEFAULT_OPTS='--reverse'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
