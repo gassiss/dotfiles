@@ -31,37 +31,9 @@ function _hydro_pwd --on-variable PWD --on-variable hydro_ignored_git_paths --on
     )
 end
 
-function _hydro_postexec --on-event fish_postexec
-    set --local last_status $pipestatus
-    set --global _hydro_status "$_hydro_newline$_hydro_color_prompt$hydro_symbol_prompt"
-
-    for code in $last_status
-        if test $code -ne 0
-            set --global _hydro_status "$_hydro_color_error| "(echo $last_status)" $_hydro_newline$_hydro_color_prompt$_hydro_color_error$hydro_symbol_prompt"
-            break
-        end
-    end
-
-    test "$CMD_DURATION" -lt 1000 && set _hydro_cmd_duration && return
-
-    set --local secs (math --scale=1 $CMD_DURATION/1000 % 60)
-    set --local mins (math --scale=0 $CMD_DURATION/60000 % 60)
-    set --local hours (math --scale=0 $CMD_DURATION/3600000)
-
-    set --local out
-
-    test $hours -gt 0 && set --local --append out $hours"h"
-    test $mins -gt 0 && set --local --append out $mins"m"
-    test $secs -gt 0 && set --local --append out $secs"s"
-
-    set --global _hydro_cmd_duration "$out "
-end
-
 function _hydro_prompt --on-event fish_prompt
     set --query _hydro_status || set --global _hydro_status "$_hydro_newline$_hydro_color_prompt$hydro_symbol_prompt"
     set --query _hydro_pwd || _hydro_pwd
-
-    command kill $_hydro_last_pid 2>/dev/null
 
     set --query _hydro_skip_git_prompt && set $_hydro_git && return
 
@@ -74,31 +46,7 @@ function _hydro_prompt --on-event fish_prompt
         )
 
         test -z \"\$$_hydro_git\" && set --universal $_hydro_git \"\$branch \"
-
-        ! command git diff-index --quiet HEAD 2>/dev/null ||
-            count (command git ls-files --others --exclude-standard) >/dev/null && set info \"$hydro_symbol_git_dirty\"
-
-        for fetch in $hydro_fetch false
-            command git rev-list --count --left-right @{upstream}...@ 2>/dev/null |
-                read behind ahead
-
-            switch \"\$behind \$ahead\"
-                case \" \" \"0 0\"
-                case \"0 *\"
-                    set upstream \" $hydro_symbol_git_ahead\$ahead\"
-                case \"* 0\"
-                    set upstream \" $hydro_symbol_git_behind\$behind\"
-                case \*
-                    set upstream \" $hydro_symbol_git_ahead\$ahead $hydro_symbol_git_behind\$behind\"
-            end
-
-            set --universal $_hydro_git \"\$branch\$info\$upstream \"
-
-            test \$fetch = true && command git fetch --no-tags 2>/dev/null
-        end
     " &
-
-    set --global _hydro_last_pid (jobs --last --pid)
 end
 
 function _hydro_fish_exit --on-event fish_exit
