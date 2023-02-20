@@ -81,6 +81,15 @@ w!() {
 zle -N w!
 bindkey '^[?' w!
 
+wl-kill-line () {
+  zle kill-line   # `kill-line` is the default ctrl+k binding
+  echo -n $CUTBUFFER | wl-copy
+}
+
+zle -N wl-kill-line  # register our new function
+
+bindkey '^K' wl-kill-line  # change the ctrl+k binding to use our new function
+
 # expand alias with TAB
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
