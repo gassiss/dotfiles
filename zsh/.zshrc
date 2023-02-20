@@ -67,8 +67,11 @@ bindkey '^[e' edit-command-line
 
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_DEFAULT_OPTS='--reverse'
+FD_OPTIONS='--follow --exclude .git --exclude node_modules'
+export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
+export FZF_CTRL_T_COMMAND="fd -uu --type f --type l $FD_OPTIONS"
+export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
+export FZF_DEFAULT_OPTS='--reverse --bind="ctrl-y:execute-silent(echo {+} | wl-copy),ctrl-a:select-all+accept"'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
