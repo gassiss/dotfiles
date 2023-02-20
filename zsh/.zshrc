@@ -2,9 +2,9 @@
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
-    '%F{3}%b%F{2}|%F{3}%a%f '
+    '%F{14}%b%F{2}|%F{14}%a%f '
 zstyle ':vcs_info:*' formats       \
-    '%F{3}%b%f '
+    '%F{14}%b%f '
 zstyle ':vcs_info:*' enable git
 
 vcs_info_wrapper() {
@@ -15,8 +15,31 @@ vcs_info_wrapper() {
 }
 GITBRANCH=$'$(vcs_info_wrapper)'
 
+get_pwd() {
+  pw=$(echo $PWD | sed 's+/home/gassis+~+')
+  gr=$(git --no-optional-locks rev-parse --show-toplevel 2> /dev/null)
+  grs=(${(@s:/:)gr})
+  git_root=$grs[-1]
+  parts=(${(@s:/:)pw})
+  found=0
+  pw=""
+  for (( i = 1; i < $#parts; i++ )); do
+    el=$parts[i]
+    if [[ $found == 0 && $el == $git_root ]]; then
+      pw+="$git_root%{$fg[green]%}"
+      found=1
+    else
+      pw+=$(echo $el | sed 's+\(\.\?.\).*+\1+')
+    fi
+    pw+="/"
+  done
+  pw+="%B$parts[-1]%b"
+  echo $pw
+}
+NICE_PwD=$'$(get_pwd)'
+
 autoload -U colors && colors
-PS1="%B%{$fg[green]%}%~ %{$reset_color%}$GITBRANCH%b❱ "
+PS1="%{$fg[green]%}$NICE_PwD %{$reset_color%}$GITBRANCH❱ "
 # RPROMPT="$GITBRANCH$USER@$HOST"
 
 # History stuff
@@ -88,3 +111,4 @@ zstyle ':completion:*' regular true
 # load zsh highlighting plugin. Must be last in the file
 [ -d "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+source "$HOME/.grafanarc"
