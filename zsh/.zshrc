@@ -2,9 +2,9 @@
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
-    '%F{3}(%f%F{1}%b%F{3}|%F{1}%a%F{3})%f'
+    '%F{3}%b%F{2}|%F{3}%a%f '
 zstyle ':vcs_info:*' formats       \
-    '%F{3}(%f%F{1}%b%F{3})%f'
+    '%F{3}%b%f '
 zstyle ':vcs_info:*' enable git
 
 vcs_info_wrapper() {
@@ -15,21 +15,8 @@ vcs_info_wrapper() {
 }
 GITBRANCH=$'$(vcs_info_wrapper)'
 
-tw_get_context() {
-  task _get rc.context
-}
-TW_CONTEXT=$'$(tw_get_context)'
-tw_get_inbox_count() {
-  task +in +PENDING count
-}
-TW_INBOX_COUNT=$'$(tw_get_inbox_count)'
-
-# Enable colors and change prompt. Explanation of the cryptic string:
-# %B %b starts and resets bold
-# %{} expands to set color
-# %~ expands to current dir
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[magenta]%}%3~%{$fg[red]%}]%{$reset_color%}$GITBRANCH$%b "
+PS1="%B%{$fg[green]%}%~ %{$reset_color%}$GITBRANCH%b❱ "
 # RPROMPT="$GITBRANCH$USER@$HOST"
 
 # History stuff
@@ -47,37 +34,10 @@ setopt HIST_VERIFY # doesnt submit command when searching with ^r
 autoload -U +X compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
-
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-    echo -ne '\e[2 q'
-  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ $1 == 'beam' ]]; then
-    echo -ne '\e[6 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
- zle -K viins
- echo -ne "\e[6 q"
-}
-zle -N zle-line-init
-echo -ne '\e[6 q'
-preexec() { echo -ne '\e[6 q' ;}
-
-# edit in line with vim with ctrl-e
+# edit in line with vim with alt-ctrl-e
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^[e' edit-command-line
 
 # load aliases
 [ -f "$HOME/.dotfiles/aliasrc" ] && source "$HOME/.dotfiles/aliasrc"
@@ -122,25 +82,8 @@ bindkey '^[?' w!
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
 
-in() {
-  if [ $# = 0 ]; then
-    task in
-  else
-    task add +in $@
-  fi
-}
-
-tick () {
-  deadline=$1
-  shift
-  in +tickle wait:$deadline $@
-}
-
-alias think="tick +1d"
-
-# load zsh auto suggestions plugin
-# [ -d "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-# bindkey '^k' autosuggest-accept
+# load zsh highlighting plugin. Must be last in the file
+[ -d "$HOME/.dotfiles/zsh/plugins/fzf-tab" ] && source "$HOME/.dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 
 # load zsh highlighting plugin. Must be last in the file
 [ -d "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
