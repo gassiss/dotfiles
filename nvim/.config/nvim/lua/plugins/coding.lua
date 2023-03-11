@@ -4,9 +4,7 @@ return {
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       local cmp = require("cmp")
@@ -25,9 +23,7 @@ return {
           end,
         },
         sources = cmp.config.sources({
-          { name = "luasnip" },
           { name = "nvim_lsp" },
-          { name = "buffer" },
           { name = "path" },
         }),
         experimental = {
@@ -35,67 +31,7 @@ return {
             hl_group = "LspCodeLens",
           },
         },
-        -- adds some icons to completion?
-        -- formatting = {
-        --   format = function(_, item)
-        --     local icons = require("lazyvim.config").icons.kinds
-        --     if icons[item.kind] then
-        --       item.kind = icons[item.kind] .. item.kind
-        --     end
-        --     return item
-        --   end,
-        -- },
       }
-    end,
-  },
-
-  {
-    "L3MON4D3/LuaSnip",
-    event = "InsertEnter",
-    opts = {
-      history = true,
-      delete_check_events = "TextChanged,TextChangedI",
-    },
-    config = function(_, opts)
-      local ls = require("luasnip")
-      ls.setup(opts)
-
-      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/config/snippets" })
-
-      ls.filetype_extend("javascript", { "typescript" })
-      ls.filetype_extend("typescriptreact", { "typescript" })
-
-      local function map(mode, l, r, optss)
-        vim.keymap.set(mode, l, r, optss)
-      end
-
-      map("i", "<c-k>", function()
-        if ls.expand_or_jumpable() then
-          ls.expand_or_jump()
-        end
-      end, { silent = true })
-
-      map("i", "<c-j>", function()
-        if ls.jumpable(-1) then
-          ls.jump(-1)
-        end
-      end, { silent = true })
-
-      map("i", "<c-l>", function()
-        if ls.choice_active() then
-          ls.change_choice(1)
-        end
-      end, { silent = true })
-
-      map("n", "<leader><leader>s", function()
-        require("luasnip.loaders.from_lua").lazy_load({
-          paths = "~/.config/nvim/lua/config/snippets",
-        })
-      end)
-
-      map("n", "<leader><leader>e", function()
-        require('luasnip.loaders').edit_snippet_files()
-      end)
     end,
   },
 
@@ -115,7 +51,8 @@ return {
         map("n", "[c", gs.prev_hunk, "Prev hunk")
 
         map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
-        map({ "n", "v" }, "<C-x>", ":Gitsigns stage_hunk<CR>", "Stage hunk")
+        map({ "n", "v" }, "]r", ":Gitsigns stage_hunk<CR>", "Stage hunk")
+        map({ "n", "v" }, "[r", gs.undo_stage_hunk, "Stage hunk")
         map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset hunk")
         map("n", "<leader>hS", gs.stage_buffer, "Stage buffer")
         map("n", "<leader>hu", gs.undo_stage_hunk, "Undo stage hunk")
