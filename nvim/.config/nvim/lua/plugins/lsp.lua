@@ -37,7 +37,6 @@ return {
         "eslint",
         "rust_analyzer@nightly",
         "sumneko_lua",
-        -- "marksman",
       },
       automatic_installation = false,
     },
@@ -51,7 +50,6 @@ return {
       require("lspconfig").pylsp.setup(config())
       require("lspconfig").gopls.setup(config())
       require("lspconfig").rust_analyzer.setup(config())
-      -- require("lspconfig").marksman.setup(config())
       require("lspconfig").sumneko_lua.setup(config({
         settings = {
           Lua = {

@@ -93,6 +93,11 @@ zle -N wl-kill-line  # register our new function
 
 bindkey '^K' wl-kill-line  # change the ctrl+k binding to use our new function
 
+bindkey '^H' backward-delete-word # c-bs to delete word like everywhere else
+
+# force emacs for line editing
+bindkey -e
+
 # expand alias with TAB
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true

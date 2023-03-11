@@ -64,6 +64,8 @@ vim.keymap.set("v", "<leader>d", '"_d')
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
+vim.keymap.set("i", "<C-BS>", "<C-o>vbc")
+
 -- tabs and windows
 -- vim.keymap.set('n', '<c-,>', '<c-w>');
 vim.keymap.set('n', 's', '<c-w>');
