@@ -18,7 +18,7 @@ return {
           "dockerfile",
           "c",
           "json",
-          "norg",
+          "rust",
           "yaml",
           "markdown",
           "markdown_inline",

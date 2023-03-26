@@ -67,14 +67,13 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("i", "<C-BS>", "<C-o>vbc")
 
 -- tabs and windows
--- vim.keymap.set('n', '<c-,>', '<c-w>');
-vim.keymap.set('n', 's', '<c-w>');
 vim.keymap.set("n", "sn", ":tabnew %<CR>")
--- vim.keymap.set("n", "<C-,><C-n>", ":tabnew %<CR>")
--- vim.keymap.set("n", "<C-,><C-p>", "gT")
--- vim.keymap.set("n", "<C-,><C-y>", "gt")
-vim.keymap.set("n", "sp", "gT")
-vim.keymap.set("n", "sy", "gt")
+vim.keymap.set("n", "sq", "<C-w>q")
+vim.keymap.set("n", "sa", "1gt")
+vim.keymap.set("n", "so", "2gt")
+vim.keymap.set("n", "se", "3gt")
+vim.keymap.set("n", "su", "4gt")
+vim.keymap.set("n", "si", "5gt")
 
 vim.keymap.set("n", "<BS>", "<c-^>")
 
@@ -83,3 +82,7 @@ vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
 vim.keymap.set("i", "<C-CR>", "<C-o>O")
 vim.keymap.set("n", "<C-CR>", "mlO<Esc>`l") -- insert new line above cursor
 vim.keymap.set("n", "<CR>", "mlo<Esc>`l") -- insert new line under cursor
+
+vim.keymap.set("i", "<C-y>", '<C-r>"')
+
+vim.keymap.set("i", "<C-c>", "<Esc>")

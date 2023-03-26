@@ -19,6 +19,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.g.netrw_banner = false
 vim.g.netrw_keepdir = 1
+vim.g.netrw_altfile = 1
 vim.opt.signcolumn = "yes"
 vim.opt.guicursor = ""
 -- vim.cmd[[set laststatus=3]]

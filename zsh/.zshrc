@@ -74,6 +74,7 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 export FZF_DEFAULT_OPTS='--reverse --bind="ctrl-y:execute-silent(echo {+} | wl-copy),ctrl-a:select-all+accept"'
 
 export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
 
 # passes !! to watch -n1
@@ -109,3 +110,4 @@ zstyle ':completion:*' regular true
 [ -d "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 source "$HOME/.grafanarc"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
