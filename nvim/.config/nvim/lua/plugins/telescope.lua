@@ -81,17 +81,17 @@ return {
   --     require("telescope").load_extension("fzf")
   --   end,
   -- },
-  {
-    "ThePrimeagen/harpoon",
-    keys = {
-      { "<leader>a", function() require("harpoon.mark").add_file() end, desc = "Add to harpoon" },
-      { "<leader>ch", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon toggle quick menu" },
-      { "<C-h>", function() require("harpoon.ui").nav_file(1) end, desc = "Harpoon file 1" },
-      { "<C-t>", function() require("harpoon.ui").nav_file(2) end, desc = "Harpoon file 2" },
-      { "<C-n>", function() require("harpoon.ui").nav_file(3) end, desc = "Harpoon file 3" },
-      { "<C-s>", function() require("harpoon.ui").nav_file(4) end, desc = "Harpoon file 4" },
-    },
-    opts = { menu = { width = vim.api.nvim_win_get_width(0) - 20 } },
-    config = true,
-  },
+  -- {
+  --   "ThePrimeagen/harpoon",
+  --   keys = {
+  --     { "<leader>a", function() require("harpoon.mark").add_file() end, desc = "Add to harpoon" },
+  --     { "<leader>ch", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon toggle quick menu" },
+  --     { "<C-h>", function() require("harpoon.ui").nav_file(1) end, desc = "Harpoon file 1" },
+  --     { "<C-t>", function() require("harpoon.ui").nav_file(2) end, desc = "Harpoon file 2" },
+  --     { "<C-n>", function() require("harpoon.ui").nav_file(3) end, desc = "Harpoon file 3" },
+  --     { "<C-s>", function() require("harpoon.ui").nav_file(4) end, desc = "Harpoon file 4" },
+  --   },
+  --   opts = { menu = { width = vim.api.nvim_win_get_width(0) - 20 } },
+  --   config = true,
+  -- },
 }
