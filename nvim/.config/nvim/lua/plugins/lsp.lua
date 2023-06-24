@@ -37,6 +37,7 @@ return {
         "eslint",
         "rust_analyzer@nightly",
         "lua_ls",
+        'jsonnet_ls',
       },
       automatic_installation = false,
     },
@@ -49,6 +50,7 @@ return {
       require("lspconfig").eslint.setup({})
       require("lspconfig").pylsp.setup(config())
       require("lspconfig").gopls.setup(config())
+      require("lspconfig").jsonnet_ls.setup(config())
       require("lspconfig").rust_analyzer.setup(config())
       require("lspconfig").lua_ls.setup(config({
         settings = {
