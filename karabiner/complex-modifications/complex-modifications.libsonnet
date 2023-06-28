@@ -1,20 +1,18 @@
 local ctrl_and_cmd_switch = import 'ctrl-and-cmd-switch.libsonnet';
 local hyper = import 'hyper.libsonnet';
-local app_shortcuts = import 'app-shortcuts.libsonnet';
 local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
 
 {
   modifiers:: {
     any: { optional: ['any'] },
   },
-  // complex modifications:
-  // command be ctrl in wezterm. default everywhere else
-  // ctrl be command in wezterm
-  // ctrl tab in wezterm be command tab
-  // have ctrl use qwerty keys instead of dvorak
-  // caps to be hyper
-  // command bpsc to be option bpsc (delete word)
-  // ctrl bspc to be ctrl-w in wezterm (delete word)
+  mods:: {
+    ctrl_qwerty: ctrl_qwerty,
+    hyper: hyper,
+    ctrl_and_cmd_switch: ctrl_and_cmd_switch,
+  },
+  // to implement
+  // consistent command bspc: c-w in wezterm, opt-bspc everywhere else
   parameters: {
     'basic.simultaneous_threshold_milliseconds': 50,
     'basic.to_delayed_action_delay_milliseconds': 500,
@@ -23,10 +21,10 @@ local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
     'mouse_motion_to_scroll.speed': 100,
   },
   rules: [
-    ctrl_and_cmd_switch,
-    hyper,
-    app_shortcuts,
-    ctrl_qwerty,
+    $.mods.ctrl_and_cmd_switch,
+    $.mods.hyper,
+    $.mods.ctrl_qwerty,
+    // only builtin
     {
       manipulators: [
         {
@@ -53,6 +51,7 @@ local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
         },
       ],
     },
+    // only builtin. Get rid in favor of actual layer through variables
     {
       manipulators: [
         {
@@ -78,6 +77,7 @@ local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
         },
       ],
     },
+    // only builtin. Replace to work with actual layer through variables
     {
       description: 'movement',
       manipulators: [
@@ -195,8 +195,28 @@ local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
           ],
           type: 'basic',
         },
+        {
+          from: {
+            key_code: 'n',
+            modifiers: {
+              mandatory: [
+                'left_shift',
+                'left_command',
+                'left_control',
+                'left_option',
+              ],
+            },
+          },
+          to: [
+            {
+              key_code: 'return_or_enter',
+            },
+          ],
+          type: 'basic',
+        },
       ],
     },
+    // only builtin. Replace to work with actual layers through variables
     {
       description: 'numpadt',
       manipulators: [
@@ -376,30 +396,6 @@ local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
           to: [
             {
               key_code: 'keypad_0',
-            },
-          ],
-          type: 'basic',
-        },
-      ],
-    },
-    {
-      description: 'test',
-      manipulators: [
-        {
-          from: {
-            key_code: 'w',
-            modifiers: {
-              mandatory: [
-                'left_control',
-              ],
-            },
-          },
-          to: [
-            {
-              key_code: 'comma',
-              modifiers: [
-                'left_control',
-              ],
             },
           ],
           type: 'basic',

@@ -86,7 +86,7 @@
         product_id: 8705,
         vendor_id: 4617,
       },
-      ignore: true,
+      ignore: false,
       manipulate_caps_lock_led: true,
       simple_modifications: [],
       treat_as_built_in_keyboard: false,
