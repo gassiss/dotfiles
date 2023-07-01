@@ -1,16 +1,18 @@
 local common = import 'common.libsonnet';
 
 local mapping = {
-  n: 'keypad_0',
-  m: 'keypad_1',
-  comma: 'keypad_2',
-  period: 'keypad_3',
-  j: 'keypad_4',
-  k: 'keypad_5',
-  l: 'keypad_6',
-  u: 'keypad_7',
-  i: 'keypad_8',
-  o: 'keypad_9',
+  n: ['keypad_0', []],
+  m: ['keypad_1', []],
+  comma: ['keypad_2', []],
+  period: ['keypad_3', []],
+  j: ['keypad_4', []],
+  k: ['keypad_5', []],
+  l: ['keypad_6', []],
+  u: ['keypad_7', []],
+  i: ['keypad_8', []],
+  o: ['keypad_9', []],
+  h: ['e', []],
+  y: ['q', ['left_shift']],
 };
 
 {
