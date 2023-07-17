@@ -3,6 +3,7 @@ local ctrl_and_cmd_switch = import 'ctrl-and-cmd-switch.libsonnet';
 local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
 local hyper = import 'hyper.libsonnet';
 local numpad_layer = import 'numpad-layer.libsonnet';
+local shortcuts = import 'shortcuts.libsonnet';
 
 {
   modifiers:: {
@@ -14,6 +15,7 @@ local numpad_layer = import 'numpad-layer.libsonnet';
     ctrl_and_cmd_switch: ctrl_and_cmd_switch,
     numpad_layer: numpad_layer,
     bspc_shift: bspc_shift,
+    shortcuts: shortcuts,
   },
   // to implement
   // consistent command bspc: c-w in wezterm, opt-bspc everywhere else
@@ -29,6 +31,7 @@ local numpad_layer = import 'numpad-layer.libsonnet';
     $.mods.hyper,
     $.mods.ctrl_qwerty,
     $.mods.numpad_layer,
+    $.mods.shortcuts,
     // only builtin
     {
       manipulators: [
@@ -77,6 +80,50 @@ local numpad_layer = import 'numpad-layer.libsonnet';
                 'left_control',
                 'left_option',
               ],
+            },
+          ],
+          type: 'basic',
+        },
+        {
+          description: 'Dual key 2/option',
+          from: {
+            key_code: '2',
+            modifiers: {
+              optional: [
+                'any',
+              ],
+            },
+          },
+          to_if_alone: [
+            {
+              key_code: '2',
+            },
+          ],
+          to_if_held_down: [
+            {
+              key_code: 'left_option',
+            },
+          ],
+          type: 'basic',
+        },
+        {
+          description: 'Dual key 0/option',
+          from: {
+            key_code: '0',
+            modifiers: {
+              optional: [
+                'any',
+              ],
+            },
+          },
+          to_if_alone: [
+            {
+              key_code: '0',
+            },
+          ],
+          to_if_held_down: [
+            {
+              key_code: 'left_option',
             },
           ],
           type: 'basic',
