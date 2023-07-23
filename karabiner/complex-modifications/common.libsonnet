@@ -120,8 +120,11 @@ local noop_mapping = {
       ],
     }, std.objectFields(merged_mapping)),
 
+  keycode(kc, mods=[]): { key_code: kc, modifiers: mods },
+  cmd(cmd): { shell_command: cmd },
+
   // for use with dual purpose keys
-  generate_simlayer(varname, keycode): function(from_kc, to_kc) [
+  generate_simlayer(varname, keycode): function(from_kc, to) [
     {
       type: 'basic',
       from: {
@@ -133,12 +136,7 @@ local noop_mapping = {
         },
       },
       to: [
-        {
-          key_code: to_kc,
-          modifiers: [
-
-          ],
-        },
+        to,
       ],
       conditions: [
         {
@@ -185,12 +183,7 @@ local noop_mapping = {
             value: 1,
           },
         },
-        {
-          key_code: to_kc,
-          modifiers: [
-
-          ],
-        },
+        to,
       ],
     },
   ],

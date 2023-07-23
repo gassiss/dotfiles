@@ -16,7 +16,7 @@ local shared_profile = import 'shared_profile.libsonnet';
       complex_modifications: complex_modifications {
         rules: [
           complex_modifications.mods.ctrl_qwerty,
-          complex_modifications.mods.bspc_shift,
+          // complex_modifications.mods.bspc_shift,
         ],
       },
       // devices: std.map(function(device) device {

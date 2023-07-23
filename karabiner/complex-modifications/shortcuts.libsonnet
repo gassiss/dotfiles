@@ -27,6 +27,7 @@ local keystroke(key, mod='') =
   manipulators: [
     shortcut('d', [open('firefox')]),
     shortcut('s', [open('wezterm')]),
-    shortcut('m', [open('firefox'), keystroke('1', 'command')]),
+    shortcut('g', [open('safari')]),
+    // shortcut('m', [open('firefox'), keystroke('1', 'command')]),
   ],
 }
