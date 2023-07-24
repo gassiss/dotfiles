@@ -1,32 +1,25 @@
-local common = import 'common.libsonnet';
+local c = import '../lib/constants.libsonnet';
+local h = import '../lib/helpers.libsonnet';
+local
+  layer = h.layer,
+  kc = h.kc;
 
-local mapping = {
-  n: ['keypad_0', []],
-  m: ['keypad_1', []],
-  comma: ['keypad_2', []],
-  period: ['keypad_3', []],
-  j: ['keypad_4', []],
-  k: ['keypad_5', []],
-  l: ['keypad_6', []],
-  u: ['keypad_7', []],
-  i: ['keypad_8', []],
-  o: ['keypad_9', []],
-  h: ['e', []],
-  y: ['q', ['left_shift']],
-};
+local sftl = layer(c.keys.sft);
 
 {
   description: 'numpad layer on left shift',
   manipulators:
-    common.generate_layer('numpad', 'left_shift')(mapping),
-  // map('n', 'keypad_0') +
-  // map('m', 'keypad_1') +
-  // map('comma', 'keypad_2') +
-  // map('period', 'keypad_3') +
-  // map('j', 'keypad_4') +
-  // map('k', 'keypad_5') +
-  // map('l', 'keypad_6') +
-  // map('u', 'keypad_7') +
-  // map('i', 'keypad_8') +
-  // map('o', 'keypad_9'),
+    [
+      sftl.key,
+      sftl.map('n') { to: kc('keypad_0') },
+      sftl.map('m') { to: kc('keypad_1') },
+      sftl.map('comma') { to: kc('keypad_2') },
+      sftl.map('period') { to: kc('keypad_3') },
+      sftl.map('j') { to: kc('keypad_4') },
+      sftl.map('k') { to: kc('keypad_5') },
+      sftl.map('l') { to: kc('keypad_6') },
+      sftl.map('u') { to: kc('keypad_7') },
+      sftl.map('i') { to: kc('keypad_8') },
+      sftl.map('o') { to: kc('keypad_9') },
+    ],
 }

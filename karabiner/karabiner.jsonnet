@@ -7,7 +7,44 @@ local shared_profile = import 'shared_profile.libsonnet';
   global: global.global,
   profiles: [
     shared_profile {
-      complex_modifications: complex_modifications,
+      complex_modifications: complex_modifications {
+        rules: [
+          // complex_modifications.mods.ctrl_qwerty,
+          complex_modifications.mods.ctrl_and_cmd_switch,
+          complex_modifications.mods.numpad_layer,
+          complex_modifications.mods.shortcuts,
+          complex_modifications.mods.caps_layer,
+          complex_modifications.mods.dvorak,
+          // $.mods.bspc_shift,
+          // only builtin
+          {
+            manipulators: [
+              {
+                description: 'Change right command to bspc/lshift',
+                from: {
+                  key_code: 'right_command',
+                  modifiers: {
+                    optional: [
+                      'any',
+                    ],
+                  },
+                },
+                to_if_alone: [
+                  {
+                    key_code: 'delete_or_backspace',
+                  },
+                ],
+                to_if_held_down: [
+                  {
+                    key_code: 'left_shift',
+                  },
+                ],
+                type: 'basic',
+              },
+            ],
+          },
+        ],
+      },
       name: 'Default profile',
       selected: true,
     },

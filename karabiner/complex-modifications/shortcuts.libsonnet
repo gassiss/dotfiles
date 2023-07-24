@@ -1,33 +1,17 @@
-local common = import 'common.libsonnet';
-
-local shortcut(key, command) = {
-  type: 'basic',
-  from: {
-    key_code: key,
-    modifiers: common.modifiers.hyper,
-  },
-  to: [
-    {
-      shell_command: std.join('; ', command),
-    },
-  ],
-};
-
-local open(app) = 'open -a "%s.app"' % app;
-local keystroke(key, mod='') =
-  "osascript -e 'tell application \"System Events\" to keystroke \"%s\"%s'" %
-  [
-    key,
-    if mod != '' then ' using {%s down}' % mod else '',
-  ]
-;
+local h = import '../lib/helpers.libsonnet';
+local
+  from = h.from,
+  open = h.open,
+  keystroke = h.keystroke,
+  shell_cmd = h.shell_cmd;
+local c = import '../lib/constants.libsonnet';
 
 {
   description: 'App shortcuts with hyper key',
   manipulators: [
-    shortcut('d', [open('firefox')]),
-    shortcut('s', [open('wezterm')]),
-    shortcut('g', [open('safari')]),
+    from('d', c.mods.hyper) + { to: shell_cmd(open('firefox')) },
+    from('s', c.mods.hyper) + { to: shell_cmd(open('wezterm')) },
+    from('g', c.mods.hyper) + { to: shell_cmd(open('safari')) },
     // shortcut('m', [open('firefox'), keystroke('1', 'command')]),
   ],
 }
