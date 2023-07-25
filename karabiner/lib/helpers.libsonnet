@@ -18,7 +18,7 @@ local from(key_code, mods=[]) = {
   from: {
     key_code: key_code,
     modifiers: {
-      optional: ['caps_lock', 'left_shift'],
+      optional: ['left_shift'],
       mandatory: mods,
     },
   },
@@ -26,7 +26,7 @@ local from(key_code, mods=[]) = {
 
 local to_tap_hold(tap, hold) = {
   to_if_alone: tap,
-  to_if_held_down: hold
+  to_if_held_down: hold,
 };
 
 local kc(key_code, mods=null) = {
@@ -45,6 +45,16 @@ local shell_cmd(cmd) = {
 };
 
 local var_is_set(var) = { type: 'variable_if', name: var, value: 1 };
+
+local front_app_is(app) = {
+  type: 'frontmost_application_if',
+  bundle_identifiers: app,
+};
+
+local front_app_is_not(app) = {
+  type: 'frontmost_application_unless',
+  bundle_identifiers: app,
+};
 
 local open(app) = 'open -a "%s.app"' % app;
 
@@ -99,6 +109,9 @@ local layer(keycode, options={}) =
   to_tap_hold: to_tap_hold,
   kc: kc,
   set_var: set_var,
+  var_is_set: var_is_set,
+  front_app_is: front_app_is,
+  front_app_is_not: front_app_is_not,
   shell_cmd: shell_cmd,
   open: open,
   keystroke: keystroke,
