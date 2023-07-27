@@ -71,11 +71,17 @@ FD_OPTIONS='--follow --exclude .git --exclude node_modules'
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd -uu --type f --type l $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
-export FZF_DEFAULT_OPTS='--reverse --bind="ctrl-y:execute-silent(echo {+} | wl-copy),ctrl-a:select-all+accept"'
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
+export FZF_DEFAULT_OPTS='--reverse --bind="ctrl-a:select-all+accept,ctrl-j:accept"'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
+autoload -U select-word-style
+select-word-style bash
 
 # passes !! to watch -n1
 w!() {
@@ -99,6 +105,12 @@ bindkey '^H' backward-delete-word # c-bs to delete word like everywhere else
 # force emacs for line editing
 bindkey -e
 
+bindkey ^F forward-word
+bindkey ^B backward-word
+bindkey ^Q push-line
+bindkey ^O get-line
+bindkey ^V yank-pop
+bindkey ^U backward-kill-line
 # expand alias with TAB
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true

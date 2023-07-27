@@ -22,6 +22,7 @@ local keys = {
   enter: 'return_or_enter',
   esc: 'escape',
   bspc: 'delete_or_backspace',
+  del: 'delete_forward',
   tab: 'tab',
   none: 'vk_none',
 };

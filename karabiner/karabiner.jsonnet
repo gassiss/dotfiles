@@ -10,13 +10,11 @@ local shared_profile = import 'shared_profile.libsonnet';
       complex_modifications: complex_modifications {
         rules: [
           // complex_modifications.mods.ctrl_qwerty,
-          complex_modifications.mods.ctrl_and_cmd_switch,
+          complex_modifications.mods.ctrl_layer,
           complex_modifications.mods.numpad_layer,
           complex_modifications.mods.shortcuts,
           complex_modifications.mods.caps_layer,
           complex_modifications.mods.dvorak,
-          // $.mods.bspc_shift,
-          // only builtin
           {
             manipulators: [
               {

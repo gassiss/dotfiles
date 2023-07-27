@@ -1,4 +1,4 @@
-local ctrl_and_cmd_switch = import 'ctrl-and-cmd-switch.libsonnet';
+local ctrl_layer = import 'ctrl-layer.libsonnet';
 local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
 local dvorak = import 'dvorak.libsonnet';
 local numpad_layer = import 'numpad-layer.libsonnet';
@@ -11,7 +11,7 @@ local caps_layer = import 'caps-layer.libsonnet';
   },
   mods:: {
     ctrl_qwerty: ctrl_qwerty,
-    ctrl_and_cmd_switch: ctrl_and_cmd_switch,
+    ctrl_layer: ctrl_layer,
     numpad_layer: numpad_layer,
     shortcuts: shortcuts,
     caps_layer: caps_layer,

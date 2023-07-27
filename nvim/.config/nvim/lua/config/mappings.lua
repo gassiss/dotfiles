@@ -75,7 +75,7 @@ vim.keymap.set("n", "se", "3gt")
 vim.keymap.set("n", "su", "4gt")
 vim.keymap.set("n", "si", "5gt")
 
-vim.keymap.set("n", "<BS>", "<c-^>")
+vim.keymap.set("n", "<C-h>", "<c-^>")
 
 vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
 

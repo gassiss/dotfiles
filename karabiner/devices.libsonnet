@@ -1,3 +1,7 @@
+local c = import './lib/constants.libsonnet';
+local h = import './lib/helpers.libsonnet';
+local from = h.from, kc = h.kc;
+
 {
   builtin:: {
     product_id: 834,
@@ -14,26 +18,29 @@
       ignore: false,
       manipulate_caps_lock_led: true,
       simple_modifications: [
-        {
-          from: {
-            key_code: 'left_control',
-          },
-          to: [
-            {
-              key_code: 'left_option',
-            },
-          ],
-        },
-        {
-          from: {
-            key_code: 'left_option',
-          },
-          to: [
-            {
-              key_code: 'left_control',
-            },
-          ],
-        },
+        from(c.keys.ctl) { to: kc(c.keys.opt) },
+        from(c.keys.opt) { to: kc(c.keys.cmd) },
+        from(c.keys.cmd) { to: kc(c.keys.ctl) },
+        // {
+        //   from: {
+        //     key_code: 'left_control',
+        //   },
+        //   to: [
+        //     {
+        //       key_code: 'left_option',
+        //     },
+        //   ],
+        // },
+        // {
+        //   from: {
+        //     key_code: 'left_option',
+        //   },
+        //   to: [
+        //     {
+        //       key_code: 'left_control',
+        //     },
+        //   ],
+        // },
       ],
       treat_as_built_in_keyboard: false,
     },
