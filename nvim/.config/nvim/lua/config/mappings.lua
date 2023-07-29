@@ -80,3 +80,5 @@ vim.keymap.set("i", "{<cr>", "{<cr>}<C-o>O");
 vim.keymap.set('i', '{<space><space>', '{  }<left><left>');
 vim.keymap.set("i", "[<cr>", "[<cr>]<C-o>O");
 vim.keymap.set("i", "(<cr>", "(<cr>)<C-o>O");
+
+vim.keymap.set('i', '<c-r><c-v>', '<c-r>. = <C-r>"');

@@ -7,7 +7,9 @@ local function config(_opts)
         vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
       end
 
-      map("n", "grd", function () vim.diagnostic.setqflist({ open = false }) end, "Show diagnostic of current buffer in QFlist")
+      map("n", "grd", function()
+        vim.diagnostic.setqflist({ open = false })
+      end, "Show diagnostic of current buffer in QFlist")
       map("n", "gd", vim.lsp.buf.definition, "Go to definition")
       map("n", "gt", vim.lsp.buf.type_definition, "Go to type definiton")
       map("n", "grr", vim.lsp.buf.references, "References in quickfix list")
@@ -33,11 +35,10 @@ return {
       ensure_installed = {
         "tsserver",
         "gopls",
-        "pylsp",
         "eslint",
         "rust_analyzer@nightly",
         "lua_ls",
-        'jsonnet_ls',
+        "jsonnet_ls",
       },
       automatic_installation = false,
     },
@@ -48,7 +49,6 @@ return {
     config = function()
       require("lspconfig").tsserver.setup(config())
       require("lspconfig").eslint.setup({})
-      require("lspconfig").pylsp.setup(config())
       require("lspconfig").gopls.setup(config())
       require("lspconfig").jsonnet_ls.setup(config())
       require("lspconfig").rust_analyzer.setup(config())
@@ -79,20 +79,6 @@ return {
       end
 
       vim.lsp.handlers["textDocument/references"] = location_handler
-    end,
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = "BufReadPre",
-    dependencies = { "mason.nvim" },
-    opts = function()
-      local nls = require("null-ls")
-      return {
-        sources = {
-          nls.builtins.formatting.prettierd,
-          nls.builtins.formatting.stylua,
-        },
-      }
     end,
   },
 }
