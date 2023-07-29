@@ -17,11 +17,6 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<C-i>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
-        -- snippet = {
-        --   expand = function(args)
-        --     require("luasnip").lsp_expand(args.body)
-        --   end,
-        -- },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "path" },
