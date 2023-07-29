@@ -45,16 +45,11 @@ vim.keymap.set("n", "[f", ":cprev<CR>zz", { desc = "Prev in quick fix" })
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quick fix" })
 vim.keymap.set("n", "<leader>co", ":copen 5<CR>", { desc = "Open quick fix" })
 
-vim.keymap.set("n", "<c-l>", "<c-w><c-w>", { desc = "navigate split" })
 -- tabs
 vim.keymap.set("n", "<C-w><C-n>", ":tabnew %<CR>")
-vim.keymap.set("n", "<C-w><C-y>", "gT")
-vim.keymap.set("n", "<C-w><C-u>", "gt")
--- vim.keymap.set("n", "<c-p>", "gt", { desc = "next tab" })
--- vim.keymap.set("n", "<c-.>", "gT", { desc = "prev tab" })
 
 -- Paste from system clipboard
--- vim.keymap.set("n", "<leader>p", '"+p')
+-- vim.keymap.set("n", "<leader>y", '"+p')
 -- vim.keymap.set("n", "<leader>P", '"+P')
 -- vim.keymap.set("v", "<leader>p", '"+p')
 -- vim.keymap.set("v", "<leader>P", '"+P')
@@ -63,8 +58,6 @@ vim.keymap.set("v", "<leader>d", '"_d')
 
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-
-vim.keymap.set("i", "<C-BS>", "<C-o>vbc")
 
 -- tabs and windows
 vim.keymap.set("n", "sn", ":tabnew %<CR>")
@@ -76,13 +69,9 @@ vim.keymap.set("n", "su", "4gt")
 vim.keymap.set("n", "si", "5gt")
 
 vim.keymap.set("n", "<C-h>", "<c-^>")
-
 vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
-
-vim.keymap.set("i", "<C-CR>", "<C-o>O")
-vim.keymap.set("n", "<C-CR>", "mlO<Esc>`l") -- insert new line above cursor
+vim.keymap.set("i", "<C-l>", "<C-o>O")
+vim.keymap.set("n", "<C-l>", "mlO<Esc>`l") -- insert new line above cursor
 vim.keymap.set("n", "<CR>", "mlo<Esc>`l") -- insert new line under cursor
-
 vim.keymap.set("i", "<C-y>", '<C-r>"')
-
 vim.keymap.set("i", "<C-c>", "<Esc>")
