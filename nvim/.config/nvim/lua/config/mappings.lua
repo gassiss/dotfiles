@@ -75,3 +75,8 @@ vim.keymap.set("n", "<C-l>", "mlO<Esc>`l") -- insert new line above cursor
 vim.keymap.set("n", "<CR>", "mlo<Esc>`l") -- insert new line under cursor
 vim.keymap.set("i", "<C-y>", '<C-r>"')
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+vim.keymap.set("i", "{<cr>", "{<cr>}<C-o>O");
+vim.keymap.set('i', '{<space><space>', '{  }<left><left>');
+vim.keymap.set("i", "[<cr>", "[<cr>]<C-o>O");
+vim.keymap.set("i", "(<cr>", "(<cr>)<C-o>O");
