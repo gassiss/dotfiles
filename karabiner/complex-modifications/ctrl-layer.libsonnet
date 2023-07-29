@@ -1,30 +1,28 @@
 local c = import '../lib/constants.libsonnet';
 local h = import '../lib/helpers.libsonnet';
 local
-  from = h.from,
   kc = h.kc,
-  front_app_is = h.front_app_is,
   front_app_is_not = h.front_app_is_not;
 
 {
   description: 'ctrl layer',
   manipulators: [
-    from('d', h.mods.ctl) { to: kc(c.keys.del), },
-    from('f', h.mods.ctl) { to: kc(c.keys.right, c.mods.opt), },
-    from('b', h.mods.ctl) { to: kc(c.keys.left, c.mods.opt), },
-    from('w', h.mods.ctl) { to: kc(c.keys.bspc, c.mods.opt), },
-    from('h', h.mods.ctl) { to: kc(c.keys.bspc), },
-    from('m', h.mods.ctl) { to: kc(c.keys.enter), },
-    from('u', h.mods.ctl) { to: kc(c.keys.bspc, c.mods.cmd), },
-    from('i', h.mods.ctl) { to: kc(c.keys.tab), },
-    from('z', h.mods.ctl) { to: kc('z', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from('x', h.mods.ctl) { to: kc('x', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from('c', h.mods.ctl) { to: kc('c', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from('v', h.mods.ctl) { to: kc('v', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from('l', h.mods.ctl) { to: kc('l', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from('r', h.mods.ctl) { to: kc('r', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from('t', h.mods.ctl) { to: kc('t', c.mods.cmd), conditions: [front_app_is_not(c.apps.wezterm)] },
-    from(c.keys.tab, h.mods.ctl) { to: kc(c.keys.tab, c.keys.cmd) },
-    from(c.keys.tab, h.mods.cmd) { to: kc(c.keys.tab, c.keys.ctl) },
+    h.fromCtl('d') { to: kc(c.keys.del), },
+    h.fromCtl('f') { to: h.opt(c.keys.right), },
+    h.fromCtl('b') { to: h.opt(c.keys.left), },
+    h.fromCtl('w') { to: h.opt(c.keys.bspc), },
+    h.fromCtl('h') { to: kc(c.keys.bspc), },
+    h.fromCtl('m') { to: kc(c.keys.enter), },
+    h.fromCtl('u') { to: h.cmd(c.keys.bspc), },
+    h.fromCtl('i') { to: kc(c.keys.tab), },
+    h.fromCtl('z') { to: h.cmd('z'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl('x') { to: h.cmd('x'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl('c') { to: h.cmd('c'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl('v') { to: h.cmd('v'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl('l') { to: h.cmd('l'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl('r') { to: h.cmd('r'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl('t') { to: h.cmd('t'), conditions: [front_app_is_not(c.apps.wezterm)] },
+    h.fromCtl(c.keys.tab) { to: h.cmd(c.keys.tab) },
+    h.fromCmd(c.keys.tab) { to: h.ctl(c.keys.tab) },
   ],
 }

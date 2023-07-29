@@ -24,6 +24,11 @@ local from(key_code, mods=[]) = {
   },
 };
 
+local fromCtl(key_code) = from(key_code, mods.ctl);
+local fromCmd(key_code) = from(key_code, mods.cmd);
+local fromOpt(key_code) = from(key_code, mods.cmd);
+local fromHpr(key_code) = from(key_code, mods.hyper);
+
 local to_tap_hold(tap, hold) = {
   to_if_alone: tap,
   to_if_held_down: hold,
@@ -32,6 +37,10 @@ local to_tap_hold(tap, hold) = {
 local kc(key_code, mods=null) = {
   key_code: key_code,
 } + if mods == null then {} else { modifiers: mods };
+
+local ctl(key_code) = kc(key_code, mods.ctl);
+local cmd(key_code) = kc(key_code, mods.cmd);
+local opt(key_code) = kc(key_code, mods.opt);
 
 local set_var(name, val) = {
   set_variable: {
@@ -106,8 +115,15 @@ local layer(keycode, options={}) =
 
 {
   from: from,
+  fromCtl: fromCtl,
+  fromCmd: fromCmd,
+  fromOpt: fromOpt,
+  fromHpr: fromHpr,
   to_tap_hold: to_tap_hold,
   kc: kc,
+  ctl: ctl,
+  cmd: cmd,
+  opt: opt,
   set_var: set_var,
   var_is_set: var_is_set,
   front_app_is: front_app_is,
