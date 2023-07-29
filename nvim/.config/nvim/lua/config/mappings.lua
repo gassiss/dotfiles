@@ -73,7 +73,7 @@ vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
 vim.keymap.set("i", "<C-l>", "<C-o>O")
 vim.keymap.set("n", "<C-l>", "mlO<Esc>`l") -- insert new line above cursor
 vim.keymap.set("n", "<CR>", "mlo<Esc>`l") -- insert new line under cursor
-vim.keymap.set("i", "<C-y>", '<C-r>"')
+vim.keymap.set("i", "<C-y>", '<cmd>set paste<cr><C-r>"<cmd>set nopaste<cr>')
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("i", "{<cr>", "{<cr>}<C-o>O");
