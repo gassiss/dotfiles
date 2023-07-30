@@ -5,9 +5,11 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
+      'L3MON4D3/LuaSnip',
     },
     opts = function()
       local cmp = require("cmp")
+
       return {
         completion = { completeopt = "menu,menuone,noinsert" },
         mapping = cmp.mapping.preset.insert({
@@ -21,6 +23,11 @@ return {
           { name = "nvim_lsp" },
           { name = "path" },
         }),
+        snippet = {
+          expand = function (args)
+            require'luasnip'.lsp_expand(args.body)
+          end
+        },
         experimental = {
           ghost_text = {
             hl_group = "LspCodeLens",

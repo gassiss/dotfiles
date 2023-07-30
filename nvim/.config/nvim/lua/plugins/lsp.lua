@@ -26,7 +26,7 @@ local function config(_opts)
 end
 
 return {
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim",   lazy = true },
   { "williamboman/mason.nvim", config = true, lazy = true },
   {
     "williamboman/mason-lspconfig.nvim",

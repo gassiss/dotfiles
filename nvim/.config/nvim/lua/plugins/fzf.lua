@@ -1,34 +1,48 @@
 local vertical_preview = { layout = 'vertical', vertical = 'down:75%' }
 
--- Command A: takes a tag and rg's the codebase for the occurrences of it. live_grep the result
--- Command B: rg's to return unique tag list in the folder. Feed list into fzf for fuzzy matching. run Command A on the selected tag
--- Command C: run command A on tag under cursor
---
-local fzf = function(action, _opts)
+local fzf = function(_action, _opts)
   return function()
     local opts = vim.tbl_deep_extend('force', { copen = '' }, _opts or {})
-    local act = require('fzf-lua')[action]
 
-    return act({ copen = '' }, opts)
+    if opts.cwd then
+      opts.cwd = vim.fn.expand("%:p:h")
+    end
+
+    local action = require('fzf-lua')[_action]
+
+    return action(opts)
   end
+end
+
+local notes_tag_search = function()
+  local fzf_lua = require('fzf-lua')
+
+  fzf_lua.fzf_exec("rg '^#\\w+' --no-heading -IN | sort -u | uniq", {
+    prompt = "tags>",
+    actions = {
+      ['default'] = function(selected, opts)
+        fzf_lua.grep({ search = table.concat(selected, "|"), no_esc = true }, opts)
+      end
+    }
+  })
 end
 
 return {
   {
     "ibhagwan/fzf-lua",
     keys = {
-      { "<leader>f", fzf('files'),                                          desc = "Find files" },
-      { "<leader>F", fzf('files', { cwd = vim.fn.expand("%:p:h") }),        desc = "Search file under dir" },
-      { "<leader>b", fzf('buffers'),                                        desc = "Find buffers" },
-      { "<leader>u", fzf('builtin'),                                        desc = "Telescope builtin" },
-      { "<leader>g", fzf('live_grep'),                                      desc = "Live grep" },
-      { "<leader>G", fzf('live_grep', { cwd = vim.fn.expand("%:p:h") }),    desc = "Live grep under dir" },
-      { "<leader>p", fzf('grep_cword'),                                     desc = "Grep string under cursor" },
-      { "<leader>r", fzf('lsp_references'),                                 desc = "Find references" },
-      { "<leader>d", fzf('lsp_definitions jump_to_single_result=true'),     desc = "Find definitions" },
-      { "<leader>t", fzf('lsp_typedefs jump_to_single_result=true'),        desc = "Find type definitions" },
-      { "<leader>i", fzf('lsp_implementations jump_to_single_result=true'), desc = "Find implementations" },
-      { "<leader>x", fzf('resume'),                                         desc = "Reopen last telescope search" },
+      "<leader>f",
+      "<leader>F",
+      "<leader>b",
+      "<leader>u",
+      "<leader>g",
+      "<leader>G",
+      "<leader>p",
+      "<leader>r",
+      "<leader>d",
+      "<leader>t",
+      "<leader>i",
+      "<leader>x",
     },
     opts = {
       keymap = {
@@ -59,5 +73,30 @@ return {
       diagnostics = { winopts = { preview = vertical_preview } },
       lsp = { winopts = { preview = vertical_preview } },
     },
+    config = function(_, opts)
+      local map = function(l, r, desc)
+        vim.keymap.set('n', l, r, { desc = desc })
+      end
+
+      require('fzf-lua').setup(opts)
+
+      map("<leader>f", fzf('files'), "Find files")
+      map("<leader>F", fzf('files', { cwd = true }), "Search file under dir")
+      map("<leader>b", fzf('buffers'), "Find buffers")
+      map("<leader>u", fzf('builtin'), "Telescope builtin")
+      map("<leader>g", fzf('live_grep'), "Live grep")
+      map("<leader>G", fzf('live_grep', { cwd = true }), "Live grep under dir")
+      map("<leader>p", fzf('grep_cword'), "Grep string under cursor")
+      map("<leader>r", fzf('lsp_references'), "Find references")
+      map("<leader>d", fzf('lsp_definitions', { jump_to_single_result = true }), "Find definitions")
+      map("<leader>i", fzf('lsp_implementations', { jump_to_single_result = true }), "Find implementations")
+      map("<leader>x", fzf('resume'), "Reopen last telescope search")
+
+      if vim.loop.cwd() == vim.fn.expand('~/notes') then
+        map("<leader>t", notes_tag_search, "Find tags")
+      else
+        map("<leader>t", fzf('lsp_typedefs', { jump_to_single_result = true }), "Find type definitions")
+      end
+    end,
   },
 }

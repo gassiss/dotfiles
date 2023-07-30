@@ -75,7 +75,10 @@ export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
-export FZF_DEFAULT_OPTS='--reverse --bind="ctrl-a:select-all+accept,ctrl-j:accept"'
+export FZF_DEFAULT_OPTS="
+  --reverse
+  --bind='ctrl-q:select-all+accept,f4:toggle-preview,ctrl-d:preview-page-down,ctrl-u:preview-page-up'
+  --preview 'bat {}' --preview-window hidden:wrap"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin
