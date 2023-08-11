@@ -85,12 +85,10 @@ load_plugin "fzf-tab/fzf-tab.plugin.zsh" "Aloxaf/fzf-tab"
 load_plugin "zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" "zsh-users/zsh-syntax-highlighting"
 load_plugin "powerlevel10k/powerlevel10k.zsh-theme" "romkatv/powerlevel10k"
 
-source "$HOME/.grafanarc"
+[ -f ~/.grafanarc ] && source ~/.grafanarc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source /opt/local/share/nvm/init-nvm.sh
-
-source /opt/local/share/fzf/shell/key-bindings.zsh
-source /opt/local/share/fzf/shell/completion.zsh
+[ -f /opt/local/share/nvm/init-nvm.sh ] && source /opt/local/share/nvm/init-nvm.sh
+[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
+[ -f /opt/local/share/fzf/shell/completion.zsh ] && source /opt/local/share/fzf/shell/completion.zsh
 
 [[ ! -f ~/.dotfiles/zsh/p10k.zsh ]] || source ~/.dotfiles/zsh/p10k.zsh
