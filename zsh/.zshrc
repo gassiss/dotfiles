@@ -1,46 +1,9 @@
-# sets up git branch in the prompt. As (branch) or (branch|action)
-setopt prompt_subst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' actionformats \
-    '%F{14}%b%F{2}|%F{14}%a%f '
-zstyle ':vcs_info:*' formats       \
-    '%F{14}%b%f '
-zstyle ':vcs_info:*' enable git
-
-vcs_info_wrapper() {
-  vcs_info
-  if [ -n "$vcs_info_msg_0_" ]; then
-    echo "${vcs_info_msg_0_}"
-  fi
-}
-GITBRANCH=$'$(vcs_info_wrapper)'
-
-get_pwd() {
-  pw=$(echo $PWD | sed 's+/home/gassis+~+')
-  gr=$(git --no-optional-locks rev-parse --show-toplevel 2> /dev/null)
-  grs=(${(@s:/:)gr})
-  git_root=$grs[-1]
-  parts=(${(@s:/:)pw})
-  found=0
-  pw=""
-  for (( i = 1; i < $#parts; i++ )); do
-    el=$parts[i]
-    if [[ $found == 0 && $el == $git_root ]]; then
-      pw+="$git_root%{$fg[green]%}"
-      found=1
-    else
-      pw+=$(echo $el | sed 's+\(\.\?.\).*+\1+')
-    fi
-    pw+="/"
-  done
-  pw+="%B$parts[-1]%b"
-  echo $pw
-}
-NICE_PwD=$'$(get_pwd)'
-
-autoload -U colors && colors
-PS1="%{$fg[green]%}$NICE_PwD %{$reset_color%}$GITBRANCH❱ "
-# RPROMPT="$GITBRANCH$USER@$HOST"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # History stuff
 export HISTSIZE=1000000
@@ -62,9 +25,6 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^[e' edit-command-line
 
-# load aliases
-[ -f "$HOME/.dotfiles/aliasrc" ] && source "$HOME/.dotfiles/aliasrc"
-
 command -v kubectl &> /dev/null && source <(kubectl completion zsh)
 
 FD_OPTIONS='--follow --exclude .git --exclude node_modules'
@@ -83,6 +43,8 @@ export FZF_DEFAULT_OPTS="
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
+export PATH=$PATH:$HOME/wezterm/target/release
+
 autoload -U select-word-style
 select-word-style bash
 
@@ -94,35 +56,41 @@ w!() {
 zle -N w!
 bindkey '^[?' w!
 
-wl-kill-line () {
-  zle kill-line   # `kill-line` is the default ctrl+k binding
-  echo -n $CUTBUFFER | wl-copy
-}
-
-zle -N wl-kill-line  # register our new function
-
-bindkey '^K' wl-kill-line  # change the ctrl+k binding to use our new function
-
-bindkey '^H' backward-delete-word # c-bs to delete word like everywhere else
-
-# force emacs for line editing
-bindkey -e
-
-bindkey ^F forward-word
-bindkey ^B backward-word
-bindkey ^Q push-line
-bindkey ^O get-line
-bindkey ^V yank-pop
-bindkey ^U backward-kill-line
 # expand alias with TAB
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
 
-# load zsh highlighting plugin. Must be last in the file
-[ -d "$HOME/.dotfiles/zsh/plugins/fzf-tab" ] && source "$HOME/.dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
+function load {
+  file="$HOME/.dotfiles/zsh/$1"
+  [ -f $file ] && source $file
+}
+load bindkey.zsh
+load alias.zsh
 
-# load zsh highlighting plugin. Must be last in the file
-[ -d "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting" ] && source "$HOME/.dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+function load_plugin {
+  readonly plugin_file=${1:?"must specify plugin file to load"}
+
+  file="$HOME/.dotfiles/zsh/plugins/$plugin_file"
+  if [ -f "$file" ]; then
+    source $file
+    return
+  fi
+
+  readonly plugin_repo=${2:?"must specify plugin repo"}
+  git -C "$HOME/.dotfiles/zsh/plugins" clone "https://github.com/$plugin_repo.git"
+  load_plugin $plugin_file
+}
+
+load_plugin "fzf-tab/fzf-tab.plugin.zsh" "Aloxaf/fzf-tab"
+load_plugin "zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" "zsh-users/zsh-syntax-highlighting"
+load_plugin "powerlevel10k/powerlevel10k.zsh-theme" "romkatv/powerlevel10k"
 
 source "$HOME/.grafanarc"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /opt/local/share/nvm/init-nvm.sh
+
+source /opt/local/share/fzf/shell/key-bindings.zsh
+source /opt/local/share/fzf/shell/completion.zsh
+
+[[ ! -f ~/.dotfiles/zsh/p10k.zsh ]] || source ~/.dotfiles/zsh/p10k.zsh
