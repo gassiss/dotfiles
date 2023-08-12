@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+config.check_for_updates = false
 config.color_scheme = "Gruvbox dark, medium (base16)"
 config.hide_tab_bar_if_only_one_tab = true
 config.font = wezterm.font('Comic Code')
