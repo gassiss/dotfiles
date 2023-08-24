@@ -44,6 +44,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin/:$HOME/.local/bin
 export PATH=$PATH:$HOME/wezterm/target/release
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 autoload -U select-word-style
 select-word-style bash
@@ -88,6 +89,7 @@ load_plugin "powerlevel10k/powerlevel10k.zsh-theme" "romkatv/powerlevel10k"
 [ -f ~/.grafanarc ] && source ~/.grafanarc
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /opt/local/share/nvm/init-nvm.sh ] && source /opt/local/share/nvm/init-nvm.sh
+[ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 [ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
 [ -f /opt/local/share/fzf/shell/completion.zsh ] && source /opt/local/share/fzf/shell/completion.zsh
 

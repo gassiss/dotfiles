@@ -33,25 +33,14 @@ return {
             return vim.api.nvim_buf_line_count(bufnr) > 2000
           end
         },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = false,
-            -- node_incremental = "<C-K>",
-            scope_incremental = false,
-            -- node_decremental = "<C-J>",
-          }
-        },
       })
+
+    vim.keymap.set('n', '<leader>ct', '<cmd>TSContextToggle<cr>')
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    keys = {
-      { '<leader>ct', '<cmd>TSContextToggle<cr>', desc = "TSContext Toggle" },
-    },
-    opts = {
-      max_lines = 5,
-    },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = { max_lines = 5, enable = false },
   },
 }

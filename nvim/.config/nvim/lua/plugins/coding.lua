@@ -39,7 +39,7 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
+    event = "BufReadPost",
     opts = {
       numhl = true,
       on_attach = function(bufnr)
