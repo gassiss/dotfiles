@@ -22,14 +22,3 @@ vim.g.netrw_keepdir = 1
 vim.g.netrw_altfile = 1
 vim.opt.signcolumn = "yes"
 vim.opt.guicursor = ""
--- vim.cmd[[set laststatus=3]]
-
--- stuff i don't know i'll need
--- set signcolumn=yes
--- termguicolors
--- highlight DiagnosticUnderlineError gui=undercurl
--- highlight DiagnosticUnderlineHint gui=undercurl
--- highlight DiagnosticUnderlineInfo gui=undercurl
--- highlight DiagnosticUnderlineWarn gui=undercurl
--- highlight DiagnosticFloatingError guifg=#fb4934
--- highlight DiagnosticFloatingWarn guifg=#d79921

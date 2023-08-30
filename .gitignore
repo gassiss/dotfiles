@@ -2,6 +2,7 @@
 zsh/plugins
 nvim/.netrwhist
 nvim/plugged
+fish/.config/fish/fish_variables
 configstore
 coc
 dconf

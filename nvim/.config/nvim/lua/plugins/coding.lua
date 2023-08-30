@@ -51,10 +51,10 @@ return {
 
         map("n", "]c", gs.next_hunk, "Next hunk")
         map("n", "[c", gs.prev_hunk, "Prev hunk")
-
-        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
         map({ "n", "v" }, "]r", ":Gitsigns stage_hunk<CR>", "Stage hunk")
         map({ "n", "v" }, "[r", gs.undo_stage_hunk, "Stage hunk")
+
+        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
         map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset hunk")
         map("n", "<leader>hS", gs.stage_buffer, "Stage buffer")
         map("n", "<leader>hu", gs.undo_stage_hunk, "Undo stage hunk")
@@ -67,19 +67,13 @@ return {
         -- stylua: ignore start
         map("n", "<leader>hl", function() gs.blame_line({ full = true }) end, "Blame line")
         map("n", "<leader>hd", function() gs.diffthis("~") end, "Diff this")
+        -- map("n", "<leader>ha", function() gs.setqflist("all", { open = false, use_location_list = true }) end, "Add all changes to Qfix")
+        -- map("n", "<leader>hb", function() gs.setqflist(0, { open = false, use_location_list = true }) end, "Add current buffer changes to Qfix")
         map("n", "<leader>ha", function() gs.setqflist("all", { open = false }) end, "Add all changes to Qfix")
-        map("n", "<leader>hb", gs.setqflist, "Add current buffer changes to Qfix")
+        map("n", "<leader>hb", function() gs.setqflist(0, { open = false }) end, "Add current buffer changes to Qfix")
         -- stylua: ignore end
       end,
     },
-  },
-
-  {
-    "tpope/vim-fugitive",
-    event = "VeryLazy",
-    config = function ()
-      vim.keymap.set("n", "<leader>hi", "<cmd>G<cr>", { desc = "Open Fugitive" })
-    end
   },
 
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },

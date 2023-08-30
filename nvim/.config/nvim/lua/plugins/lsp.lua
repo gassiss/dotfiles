@@ -19,7 +19,7 @@ local function config(_opts)
       map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
       map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
       map("n", "<leader>l", vim.diagnostic.open_float, "Open float")
-      map("n", "<leader>&", vim.lsp.buf.format, "Format file")
+      -- map("n", "<leader>&", vim.lsp.buf.format, "Format file")
       map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
     end,
   }, opts)

@@ -23,16 +23,16 @@ vim.keymap.set("n", "<Leader>w", ":w<CR>", { desc = "Save file" })
 vim.keymap.set("n", "Y", "y$")
 
 -- Increase/reduce vertical split size.
-vim.keymap.set("n", "<silent> <a-,> :vertical resize", "-1<CR>")
-vim.keymap.set("n", "<silent> <a-.> :vertical resize", "+1<CR>")
-vim.keymap.set("n", "<silent> <a-<> :vertical resize", "-5<CR>")
-vim.keymap.set("n", "<silent> <a->> :vertical resize", "+5<CR>")
+-- vim.keymap.set("n", "<silent> <a-,> :vertical resize", "-1<CR>")
+-- vim.keymap.set("n", "<silent> <a-.> :vertical resize", "+1<CR>")
+-- vim.keymap.set("n", "<silent> <a-<> :vertical resize", "-5<CR>")
+-- vim.keymap.set("n", "<silent> <a->> :vertical resize", "+5<CR>")
 
 -- Increase/reduce horizontal split size.
-vim.keymap.set("n", "<silent> <a--> :resize", "-1<CR>")
-vim.keymap.set("n", "<silent> <a-=> :resize", "+1<CR>")
-vim.keymap.set("n", "<silent> <a-_> :resize", "-5<CR>")
-vim.keymap.set("n", "<silent> <a-+> :resize", "+5<CR>")
+-- vim.keymap.set("n", "<silent> <a--> :resize", "-1<CR>")
+-- vim.keymap.set("n", "<silent> <a-=> :resize", "+1<CR>")
+-- vim.keymap.set("n", "<silent> <a-_> :resize", "-5<CR>")
+-- vim.keymap.set("n", "<silent> <a-+> :resize", "+5<CR>")
 
 -- Copy to system clipboard
 vim.keymap.set("v", "<leader>y", '"+y')
@@ -41,7 +41,9 @@ vim.keymap.set("n", "<leader>Y", '"+yg_')
 vim.keymap.set("n", "<leader>yy", '"+yy')
 
 vim.keymap.set("n", "]f", ":cnext<CR>zz", { desc = "Next in quick fix" })
+vim.keymap.set("n", "<c-j>", ":cnext<CR>zz", { desc = "Next in quick fix" })
 vim.keymap.set("n", "[f", ":cprev<CR>zz", { desc = "Prev in quick fix" })
+vim.keymap.set("n", "<c-k>", ":cprev<CR>zz", { desc = "Prev in quick fix" })
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quick fix" })
 vim.keymap.set("n", "<leader>co", ":copen 5<CR>", { desc = "Open quick fix" })
 
@@ -67,13 +69,18 @@ vim.keymap.set("n", "so", "2gt")
 vim.keymap.set("n", "se", "3gt")
 vim.keymap.set("n", "su", "4gt")
 vim.keymap.set("n", "si", "5gt")
+vim.keymap.set("n", "<c-l>", "<c-w><c-w>")
 
 vim.keymap.set("n", "<C-h>", "<c-^>")
 vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
-vim.keymap.set("i", "<C-l>", "<C-o>O")
-vim.keymap.set("n", "<C-l>", "mlO<Esc>`l") -- insert new line above cursor
+-- vim.keymap.set("i", "<C-l>", "<C-o>O")
+-- vim.keymap.set("n", "<C-l>", "mlO<Esc>`l") -- insert new line above cursor
 -- vim.keymap.set("n", "<CR>", "mlo<Esc>`l") -- insert new line under cursor
 -- vim.cmd [[nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : 'mlo<Esc>`l']]
 vim.keymap.set("i", "<C-y>", '<cmd>set paste<cr><C-r>"<cmd>set nopaste<cr>')
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+vim.keymap.set('i', '{!', '{<cr>}<esc>O')
+vim.keymap.set('i', '{+', '{<space>}<left><left><space>')
+vim.keymap.set('i', '[!', '[<cr>]<esc>O')
+vim.keymap.set('i', '[+', '[<space>]<left><left><space>')
