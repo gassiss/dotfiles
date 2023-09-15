@@ -1,5 +1,4 @@
 local ctrl_layer = import 'ctrl-layer.libsonnet';
-local ctrl_qwerty = import 'ctrl-qwerty.libsonnet';
 local dvorak = import 'dvorak.libsonnet';
 local numpad_layer = import 'numpad-layer.libsonnet';
 local shortcuts = import 'shortcuts.libsonnet';
@@ -10,7 +9,6 @@ local caps_layer = import 'caps-layer.libsonnet';
     any: { optional: ['any'] },
   },
   mods:: {
-    ctrl_qwerty: ctrl_qwerty,
     ctrl_layer: ctrl_layer,
     numpad_layer: numpad_layer,
     shortcuts: shortcuts,

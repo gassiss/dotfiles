@@ -21,26 +21,6 @@ local from = h.from, kc = h.kc;
         from(c.keys.ctl) { to: kc(c.keys.opt) },
         from(c.keys.opt) { to: kc(c.keys.cmd) },
         from(c.keys.cmd) { to: kc(c.keys.ctl) },
-        // {
-        //   from: {
-        //     key_code: 'left_control',
-        //   },
-        //   to: [
-        //     {
-        //       key_code: 'left_option',
-        //     },
-        //   ],
-        // },
-        // {
-        //   from: {
-        //     key_code: 'left_option',
-        //   },
-        //   to: [
-        //     {
-        //       key_code: 'left_control',
-        //     },
-        //   ],
-        // },
       ],
       treat_as_built_in_keyboard: false,
     },
@@ -65,7 +45,7 @@ local from = h.from, kc = h.kc;
         product_id: 50475,
         vendor_id: 1133,
       },
-      ignore: false,
+      ignore: true,
       manipulate_caps_lock_led: true,
       simple_modifications: [],
       treat_as_built_in_keyboard: false,

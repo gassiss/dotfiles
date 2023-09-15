@@ -13,12 +13,12 @@ local mods = {
   ],
 };
 
-local from(key_code, mods=[]) = {
+local from(key_code, mods=[], optional=['left_shift']) = {
   type: 'basic',
   from: {
     key_code: key_code,
     modifiers: {
-      optional: ['left_shift'],
+      optional: optional,
       mandatory: mods,
     },
   },
@@ -41,6 +41,7 @@ local kc(key_code, mods=null) = {
 local ctl(key_code) = kc(key_code, mods.ctl);
 local cmd(key_code) = kc(key_code, mods.cmd);
 local opt(key_code) = kc(key_code, mods.opt);
+local hyper(key_code) = kc(key_code, mods.hyper);
 
 local set_var(name, val) = {
   set_variable: {
@@ -124,6 +125,7 @@ local layer(keycode, options={}) =
   ctl: ctl,
   cmd: cmd,
   opt: opt,
+  hyper: hyper,
   set_var: set_var,
   var_is_set: var_is_set,
   front_app_is: front_app_is,

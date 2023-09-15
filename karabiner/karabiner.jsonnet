@@ -9,7 +9,6 @@ local shared_profile = import 'shared_profile.libsonnet';
     shared_profile {
       complex_modifications: complex_modifications {
         rules: [
-          // complex_modifications.mods.ctrl_qwerty,
           complex_modifications.mods.ctrl_layer,
           complex_modifications.mods.numpad_layer,
           complex_modifications.mods.shortcuts,
@@ -46,19 +45,19 @@ local shared_profile = import 'shared_profile.libsonnet';
       name: 'Default profile',
       selected: true,
     },
-    shared_profile {
-      name: 'external',
-      complex_modifications: complex_modifications {
-        rules: [
-          complex_modifications.mods.ctrl_qwerty,
-          // complex_modifications.mods.bspc_shift,
-        ],
-      },
-      // devices: std.map(function(device) device {
-      //   simple_modifications+:
-      //     if device.identifiers.product_id == 834 && device.identifiers.is_keyboard then [{ from: { key_code: 'right_command' }, to: [{ key_code: 'delete_or_backspace' }] }] else [],
-      //
-      // }, devices.devices),
-    },
+    // shared_profile {
+    //   name: 'external',
+    //   complex_modifications: complex_modifications {
+    //     rules: [
+    //       // complex_modifications.mods.ctrl_qwerty,
+    //       // complex_modifications.mods.bspc_shift,
+    //     ],
+    //   },
+    //   // devices: std.map(function(device) device {
+    //   //   simple_modifications+:
+    //   //     if device.identifiers.product_id == 834 && device.identifiers.is_keyboard then [{ from: { key_code: 'right_command' }, to: [{ key_code: 'delete_or_backspace' }] }] else [],
+    //   //
+    //   // }, devices.devices),
+    // },
   ],
 }
