@@ -90,7 +90,7 @@ return {
       map("<leader>r", fzf('lsp_references'), "Find references")
       map("<leader>d", fzf('lsp_definitions', { jump_to_single_result = true }), "Find definitions")
       map("<leader>i", fzf('lsp_implementations', { jump_to_single_result = true }), "Find implementations")
-      map("<leader>x", fzf('resume'), "Reopen last telescope search")
+      map("<leader>x", fzf('resume'), "Reopen last search")
 
       if vim.loop.cwd() == vim.fn.expand('~/notes') then
         map("<leader>t", notes_tag_search, "Find tags")

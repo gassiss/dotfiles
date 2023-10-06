@@ -13,9 +13,6 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "{", "[", { remap = true })
 vim.keymap.set("n", "}", "]", { remap = true })
 
-vim.keymap.set({ "n", "v" }, "`", "$")
-vim.keymap.set({ "n", "v" }, "$", "`")
-vim.keymap.set({ "n", "v" }, "&", "%")
 vim.keymap.set({ "n", "v" }, "-", "_")
 vim.keymap.set({ "n", "v" }, "_", "-")
 
