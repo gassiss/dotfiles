@@ -5,7 +5,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
-      'L3MON4D3/LuaSnip',
+      -- 'L3MON4D3/LuaSnip',
     },
     opts = function()
       local cmp = require("cmp")
@@ -23,11 +23,11 @@ return {
           { name = "nvim_lsp" },
           { name = "path" },
         }),
-        snippet = {
-          expand = function (args)
-            require'luasnip'.lsp_expand(args.body)
-          end
-        },
+        -- snippet = {
+        --   expand = function (args)
+        --     require'luasnip'.lsp_expand(args.body)
+        --   end
+        -- },
         experimental = {
           ghost_text = {
             hl_group = "LspCodeLens",
@@ -74,25 +74,5 @@ return {
         -- stylua: ignore end
       end,
     },
-  },
-
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-  {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
-    opts = {
-      mappings = {
-        comment_line = "<leader>o",
-        comment = "<leader>o",
-      },
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
-    },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
-    end,
   },
 }

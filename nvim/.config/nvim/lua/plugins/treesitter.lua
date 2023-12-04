@@ -23,6 +23,8 @@ return {
           "markdown",
           "markdown_inline",
           "jsonnet",
+          "fish",
+          "bash",
         },
         sync_install = false,
         auto_install = false,

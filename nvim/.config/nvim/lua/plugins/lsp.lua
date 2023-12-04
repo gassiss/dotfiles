@@ -27,40 +27,19 @@ end
 
 return {
   { "nvim-lua/plenary.nvim",   lazy = true },
-  { "williamboman/mason.nvim", config = true, lazy = true },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    opts = {
-      ensure_installed = {
-        "tsserver",
-        "gopls",
-        "eslint",
-        "rust_analyzer@nightly",
-        "lua_ls",
-        "jsonnet_ls",
-      },
-      automatic_installation = false,
-    },
-  },
   {
     "neovim/nvim-lspconfig",
-    lazy = true,
+    event = "BufReadPost",
     config = function()
+      -- npm install -g typescript typescript-language-server
       require("lspconfig").tsserver.setup(config())
+      -- npm i -g vscode-langservers-extracted
       require("lspconfig").eslint.setup({})
+      -- go install golang.org/x/tools/gopls@latest
       require("lspconfig").gopls.setup(config())
+      -- go install github.com/grafana/jsonnet-language-server@latest
       require("lspconfig").jsonnet_ls.setup(config())
-      require("lspconfig").rust_analyzer.setup(config())
-      require("lspconfig").lua_ls.setup(config({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim", "require" },
-            },
-          },
-        },
-      }))
+      -- require("lspconfig").rust_analyzer.setup(config())
 
       local function location_handler(_, result, ctx)
         local util = require("vim.lsp.util")
