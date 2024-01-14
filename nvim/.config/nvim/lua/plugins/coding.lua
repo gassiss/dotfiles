@@ -52,7 +52,9 @@ return {
         map("n", "]c", gs.next_hunk, "Next hunk")
         map("n", "[c", gs.prev_hunk, "Prev hunk")
         map({ "n", "v" }, "]r", ":Gitsigns stage_hunk<CR>", "Stage hunk")
-        map({ "n", "v" }, "[r", gs.undo_stage_hunk, "Stage hunk")
+        map({ "n", "v" }, "[r", gs.undo_stage_hunk, "Undo stage hunk")
+        map("n", "<c-a>", ":Gitsigns stage_hunk<CR>", "Stage hunk")
+        map("n", "<c-s>", gs.undo_stage_hunk, "Undo stage hunk")
 
         map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
         map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", "Reset hunk")

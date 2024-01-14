@@ -24,7 +24,7 @@ set -gx FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS"
 set -gx FZF_CTRL_R_OPTS "
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
-  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'"
+  --bind 'ctrl-y:execute-silent(echo -n {1..} | pbcopy)+abort'"
 set -gx FZF_DEFAULT_OPTS "
   --reverse
   --bind='ctrl-q:select-all+accept,f4:toggle-preview,ctrl-d:preview-page-down,ctrl-u:preview-page-up'
