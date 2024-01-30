@@ -15,10 +15,11 @@ local c = import '../lib/constants.libsonnet';
   manipulators:
     [
       h.fromHpr('f') + { to: shell_cmd(open('firefox')) },
+      h.fromHpr('a') + { to: shell_cmd(open('slack')) },
       h.fromHpr('d') + { to: shell_cmd(open('wezterm')) },
       h.fromHpr('g') + { to: shell_cmd(open('safari')) },
       h.fromHpr('e') + { to: shell_cmd(open('netnewswire')) },
-      h.fromHpr('t') + { to: shell_cmd(open('books')) },
+      h.fromHpr('t') + { to: shell_cmd(open('tableplus')) },
       // shortcut('m', [open('firefox'), keystroke('1', 'command')]),
     ],
   // sim_o_and('d', shell_cmd(open('firefox'))) +

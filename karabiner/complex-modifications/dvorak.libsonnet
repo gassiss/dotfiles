@@ -7,15 +7,29 @@ local
 
 
 local hyper = kc(c.keys.sft, c.mods.ctl + c.mods.opt + c.mods.cmd);
+local if_builtin_keyboard = {
+  conditions: [{
+    type: 'device_if',
+    identifiers: [{ vendor_id: 0 }],
+  }],
+};
+local if_not_builtin_keyboard = {
+  conditions: [{
+    type: 'device_unless',
+    identifiers: [{ vendor_id: 0 }],
+  }],
+};
 
 {
   description: 'dvorak base layer',
   manipulators: [
     from('1', [], []) { to: kc('7', c.mods.sft) },
     from('1', c.mods.sft, []) { to: kc('1') },
-    from('2', [], []) + to_tap_hold(kc(c.keys.open_bracket), kc(c.keys.opt)),
+    from('2', [], []) + { to: kc(c.keys.open_bracket) } + if_not_builtin_keyboard,
+    from('2', [], []) + to_tap_hold(kc(c.keys.open_bracket), kc(c.keys.opt)) + if_builtin_keyboard,
     from('2', c.mods.sft, []) { to: kc('2') },
-    from('3', [], []) + to_tap_hold(kc(c.keys.open_bracket, c.mods.sft), hyper),
+    from('3', [], []) + { to: kc(c.keys.open_bracket, c.mods.sft) } + if_not_builtin_keyboard,
+    from('3', [], []) + to_tap_hold(kc(c.keys.open_bracket, c.mods.sft), hyper) + if_builtin_keyboard,
     from('3', c.mods.sft, []) { to: kc('3') },
     from('4', [], []) { to: kc(c.keys.close_bracket, c.mods.sft) },
     from('4', c.mods.sft, []) { to: kc('4') },
@@ -27,9 +41,11 @@ local hyper = kc(c.keys.sft, c.mods.ctl + c.mods.opt + c.mods.cmd);
     from('7', c.mods.sft, []) { to: kc('7') },
     from('8', [], []) { to: kc('0', c.mods.sft) },
     from('8', c.mods.sft, []) { to: kc('8') },
-    from('9', [], []) + to_tap_hold(kc(c.keys.equal), hyper),
+    from('9', [], []) + { to: kc(c.keys.equal) } + if_not_builtin_keyboard,
+    from('9', [], []) + to_tap_hold(kc(c.keys.equal), hyper) + if_builtin_keyboard,
     from('9', c.mods.sft, []) { to: kc('9') },
-    from('0', [], []) + to_tap_hold(kc(c.keys.close_bracket), kc(c.keys.opt)),
+    from('0', [], []) + { to: kc(c.keys.close_bracket) } + if_not_builtin_keyboard,
+    from('0', [], []) + to_tap_hold(kc(c.keys.close_bracket), kc(c.keys.opt)) + if_builtin_keyboard,
     from('0', c.mods.sft, []) { to: kc('0') },
     from(c.keys.hyphen, [], []) { to: kc(c.keys.backslash, c.mods.sft) },
     from(c.keys.hyphen, c.mods.sft, []) { to: kc('4', c.mods.sft) },

@@ -38,6 +38,33 @@ local shared_profile = import 'shared_profile.libsonnet';
                 ],
                 type: 'basic',
               },
+              {
+                description: 'Change enter to enter/hyper',
+                from: {
+                  key_code: 'return_or_enter',
+                  modifiers: {
+                    optional: [
+                      'any',
+                    ],
+                  },
+                },
+                to_if_alone: [
+                  {
+                    key_code: 'return_or_enter',
+                  },
+                ],
+                to_if_held_down: [
+                  {
+                    key_code: 'left_shift',
+                    modifiers: [
+                      'left_command',
+                      'left_control',
+                      'left_option',
+                    ]
+                  },
+                ],
+                type: 'basic',
+              }
             ],
           },
         ],
