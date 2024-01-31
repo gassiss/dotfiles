@@ -3,10 +3,8 @@ local h = import './lib/helpers.libsonnet';
 local from = h.from, kc = h.kc;
 
 {
-  builtin:: {
-    product_id: 834,
-    vendor_id: 1452,
-  },
+  builtin:: c.device_ids.builtin,
+  dygma:: c.device_ids.dygma,
   devices: [
     {
       disable_built_in_keyboard_if_exists: false,
@@ -67,11 +65,9 @@ local from = h.from, kc = h.kc;
     {
       disable_built_in_keyboard_if_exists: false,
       fn_function_keys: [],
-      identifiers: {
+      identifiers: $.dygma {
         is_keyboard: true,
         is_pointing_device: true,
-        product_id: 8705,
-        vendor_id: 4617,
       },
       ignore: false,
       manipulate_caps_lock_led: true,
@@ -81,11 +77,9 @@ local from = h.from, kc = h.kc;
     {
       disable_built_in_keyboard_if_exists: false,
       fn_function_keys: [],
-      identifiers: {
+      identifiers: $.dygma {
         is_keyboard: false,
         is_pointing_device: true,
-        product_id: 8705,
-        vendor_id: 4617,
       },
       ignore: true,
       manipulate_caps_lock_led: false,

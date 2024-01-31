@@ -10,13 +10,13 @@ local hyper = kc(c.keys.sft, c.mods.ctl + c.mods.opt + c.mods.cmd);
 local if_builtin_keyboard = {
   conditions: [{
     type: 'device_if',
-    identifiers: [{ vendor_id: 0 }],
+    identifiers: [{ vendor_id: c.device_ids.builtin.vendor_id }],
   }],
 };
 local if_not_builtin_keyboard = {
   conditions: [{
     type: 'device_unless',
-    identifiers: [{ vendor_id: 0 }],
+    identifiers: [{ vendor_id: c.device_ids.builtin.vendor_id }],
   }],
 };
 

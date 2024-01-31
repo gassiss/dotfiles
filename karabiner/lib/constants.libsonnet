@@ -42,8 +42,20 @@ local apps = {
   wezterm: ['com.github.wez.wezterm'],
 };
 
+local device_ids = {
+  builtin: {
+    product_id: 0,
+    vendor_id: 0,
+  },
+  dygma: {
+    product_id: 8705,
+    vendor_id: 4617,
+  },
+};
+
 {
   mods: mods,
   keys: keys,
   apps: apps,
+  device_ids: device_ids,
 }
