@@ -10,6 +10,7 @@ return {
           "go",
           "typescript",
           "javascript",
+          "terraform",
           "tsx",
           "vim",
           "yaml",
