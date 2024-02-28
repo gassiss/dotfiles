@@ -39,7 +39,10 @@ set -gxa PATH "$HOME/wezterm/target/release"
 set -gxa PATH "$HOME/.nvm/versions/node/v18.17.0/bin"
 set -gxa PATH "$HOME/.dotfiles/bin"
 
-set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+if test -z (pgrep ssh-agent)
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+end
 
 abbr --add gs 'git status'
 abbr --add ga 'git add'
@@ -55,15 +58,12 @@ abbr --add v 'nvim'
 abbr --add t 'tmux'
 abbr --add k 'kubectl'
 
-function fd --wraps fdfind
-  fdfind $argv
-end
+# function fd --wraps fdfind
+#   fdfind $argv
+# end
 
-function gcomdb
-  if test $argv[1] = 'dump';
-    echo boo
-  else
-  end
+function tldr
+  curl cheat.sh/$argv | bat
 end
 
 function ktgl
@@ -83,5 +83,7 @@ function wl-copy
   ssh -t laptop wl-copy $argv
 end
 
-source ~/.grafana.fish
+if test -e ~/.grafana.fish
+    source ~/.grafana.fish
+end
 
