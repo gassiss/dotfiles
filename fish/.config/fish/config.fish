@@ -58,10 +58,6 @@ abbr --add v 'nvim'
 abbr --add t 'tmux'
 abbr --add k 'kubectl'
 
-# function fd --wraps fdfind
-#   fdfind $argv
-# end
-
 function tldr
   curl cheat.sh/$argv | bat
 end
