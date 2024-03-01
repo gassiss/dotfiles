@@ -70,18 +70,6 @@ function ktgl
     end
 end
 
-if set -q SSH_CLIENT;
-    __setup_ssh_config
-end
-
-if test -e /cat/issue && test (cat /etc/issue | head -n1 | cut -d ' ' -f1) = "Debian"
-    __setup_debian_config
-end
-
-if test (uname) = "Darwin"
-    __setup_macos_config
-end
-
 if test -e ~/.grafana.fish
     source ~/.grafana.fish
 end
