@@ -57,17 +57,15 @@ abbr --add ll 'ls -la --color'
 abbr --add v 'nvim'
 abbr --add t 'tmux'
 abbr --add k 'kubectl'
+abbr --add kcc 'kubectl config use-context'
+abbr --add kcn 'kubectl config set-context --current --namespace'
 
 function tldr
     curl cheat.sh/$argv | bat
 end
 
-function ktgl
-    if set -q _rprompt_kubectl;
-        set --erase _rprompt_kubectl
-    else
-        set -gx _rprompt_kubectl (kubectl config view --minify -o json | jq '.contexts[] | .name, .context.namespace' | tr -d '\n' | sed "s/\"\"/\//" | tr -d '"')
-    end
+function kw
+    set -gx _rprompt_kubectl (_kubectl config view --minify -o json | jq '.contexts[] | .name, .context.namespace' | tr -d '\n' | sed "s/\"\"/\//" | tr -d '"')
 end
 
 if test -e ~/.grafana.fish
