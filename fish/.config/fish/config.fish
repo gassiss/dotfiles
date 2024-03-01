@@ -75,15 +75,15 @@ function ktgl
 end
 
 if set -q SSH_CLIENT;
-  set -gx _rprompt_user_host "$USER@$(hostname)"
+  __setup_ssh_config
 end
 
-# only do this when over ssh
-function wl-copy
-  ssh -t laptop wl-copy $argv
+if test -e /cat/issue && test (cat /etc/issue | head -n1 | cut -d ' ' -f1) = "Debian"
+  __setup_debian_config
 end
 
 if test -e ~/.grafana.fish
     source ~/.grafana.fish
 end
 
+fzf_key_bindings
