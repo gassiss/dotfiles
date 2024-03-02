@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # enable community repos
-sed -i 's/bookworm/testing/g' /etc/apt-get/sources.list
+sed -i 's/bookworm/testing/g' /etc/apt/sources.list
 apt-get update
 
 apt-get install -y --no-install-recommends --no-install-suggests \
@@ -49,7 +49,7 @@ apt-get install -y \
 cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 make install
 
-apt-get autoremove
+apt-get autoremove -y
 
 read -p "username: " username
 chsh -s $(which fish) $username
@@ -105,6 +105,7 @@ ln -s /usr/share/doc/fzf/examples/key-bindings.fish /home/$username/.config/fish
 stow git
 stow nvim
 stow tmux
+stow containers
 
 echo "installing LSPs"
 npm config set prefix /home/$username/.local/npm
@@ -119,5 +120,11 @@ EOL
 # shut up welcome message on login
 touch /home/$username/.hushlogin
 fish -c "set -U fish_greeting ''"
+
+echo "enabling podman socket for docker-compose"
+systemctl --user enable podman.socket
+systemctl --user start podman.socket
+
+echo "need to have this env var set: export DOCKER_HOST=unix://\$XDG_RUNTIME_DIR/podman/podman.sock"
 EOF
 
