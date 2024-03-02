@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 # enable community repos
-sed -i 's/bookworm/testing/g' /etc/apt/sources.list
-apt update
+sed -i 's/bookworm/testing/g' /etc/apt-get/sources.list
+apt-get update
 
-# install pkgs
-apt install -y \
+apt-get install -y --no-install-recommends --no-install-suggests \
     git \
     build-essential \
     stow \
@@ -18,13 +17,18 @@ apt install -y \
     fd-find \
     curl \
     jq \
-    podman \
+    doc-base \
+    lsof \
+    strace \
+    ca-certificates \
     docker-compose \
     qemu-user-static
 
+apt-get install -y --no-install-suggests podman
+
 # nodejs 20
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-apt install -y nodejs
+apt-get install -y nodejs
 
 # fix file watcher limit
 echo fs.inotify.max_user_watches= 131070 | tee -a /etc/sysctl.conf
@@ -37,7 +41,7 @@ PATH="$PATH:/usr/local/go/bin"
 
 # neovim
 git clone -b stable --single-branch --depth 1 https://github.com/neovim/neovim.git
-apt install -y \
+apt-get install -y \
     ninja-build \
     gettext \
     cmake \
@@ -45,7 +49,7 @@ apt install -y \
 cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 make install
 
-apt autoremove
+apt-get autoremove
 
 read -p "username: " username
 chsh -s $(which fish) $username
