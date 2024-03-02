@@ -9,5 +9,5 @@ function kubectl --wraps _kubectl
 end
 
 function kclear
-    set --erase _rprompt_kubectl
+    kubectl-prompt disable
 end

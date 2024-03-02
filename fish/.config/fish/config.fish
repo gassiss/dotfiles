@@ -60,12 +60,8 @@ abbr --add k 'kubectl'
 abbr --add kcc 'kubectl config use-context'
 abbr --add kcn 'kubectl config set-context --current --namespace'
 
-function tldr
-    curl cheat.sh/$argv | bat
-end
-
 function kw
-    set -gx _rprompt_kubectl (_kubectl config view --minify -o json | jq '.contexts[] | .name, .context.namespace' | tr -d '\n' | sed "s/\"\"/\//" | tr -d '"')
+    kubectl-prompt enable
 end
 
 if test -e ~/.grafana.fish
