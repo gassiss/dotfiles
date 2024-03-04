@@ -28,11 +28,6 @@ set -gxa PATH "$HOME/wezterm/target/release"
 set -gxa PATH "$HOME/.nvm/versions/node/v18.17.0/bin"
 set -gxa PATH "$HOME/.dotfiles/bin"
 
-if test -z (pgrep ssh-agent)
-    eval (ssh-agent -c)
-    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-end
-
 abbr --add gs 'git status'
 abbr --add ga 'git add'
 abbr --add gco 'git checkout'
