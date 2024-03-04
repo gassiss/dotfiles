@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+in="$1"
+what="$2"
+
+sleep $in && osascript -e "display notification \"$what\" with title \"Reminder from $in secs ago\" sound name \"Glass.aiff\"" &
+# sleep $in && osascript -e "display alert \"Reminder from $in secs ago\" message \"$what\"" &
