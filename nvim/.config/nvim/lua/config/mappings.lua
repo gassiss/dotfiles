@@ -93,3 +93,6 @@ vim.keymap.set('i', '[=', '[]<left>')
 -- vim.keymap.set('i', '({+', '({<space>})<left><left><left><space>')
 -- vim.keymap.set('i', '[|', '[<cr>]<esc>O')
 -- vim.keymap.set('i', '[+', '[<space>]<left><left><space>')
+
+vim.keymap.set('n', '<leader>sq', ':mksession! .vim/session.vim<cr>:qa<cr>')
+vim.keymap.set('n', '<leader>sl', ':source .vim/session.vim<cr>')

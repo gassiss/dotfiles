@@ -23,6 +23,6 @@ vim.g.netrw_altfile = 1
 vim.opt.signcolumn = "yes"
 vim.opt.guicursor = ""
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv('HOME') .. "/.vim/undo"
+vim.opt.undodir = ".vim/undo"
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
