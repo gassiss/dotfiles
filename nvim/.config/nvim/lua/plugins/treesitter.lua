@@ -33,7 +33,7 @@ return {
           enable = true,
           additional_vim_regex_highlighting = false,
           disable = function (_, bufnr)
-            return vim.api.nvim_buf_line_count(bufnr) > 2000
+            return vim.bo.filetype == 'help' or vim.api.nvim_buf_line_count(bufnr) > 2000
           end
         },
       })

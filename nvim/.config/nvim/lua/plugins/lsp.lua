@@ -1,7 +1,6 @@
 local function config(_opts)
   local opts = _opts or {}
   return vim.tbl_deep_extend("force", {
-    -- capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     on_attach = function(_, bufnr)
       local function map(mode, l, r, desc)
         vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
