@@ -41,6 +41,7 @@ local kc(key_code, mods=null) = {
 local ctl(key_code) = kc(key_code, mods.ctl);
 local cmd(key_code) = kc(key_code, mods.cmd);
 local opt(key_code) = kc(key_code, mods.opt);
+local sft(key_code) = kc(key_code, mods.sft);
 local hyper(key_code) = kc(key_code, mods.hyper);
 
 local set_var(name, val) = {
@@ -125,6 +126,7 @@ local layer(keycode, options={}) =
   ctl: ctl,
   cmd: cmd,
   opt: opt,
+  sft: sft,
   hyper: hyper,
   set_var: set_var,
   var_is_set: var_is_set,

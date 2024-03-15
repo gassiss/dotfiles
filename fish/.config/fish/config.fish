@@ -6,7 +6,7 @@ bind \ce end-of-line-or-accept-autosuggestion
 bind \cb backward-word
 bind \cf forward-word
 
-set -l FD_OPTIONS '--follow --exclude .git --exclude node_modules'
+set -l FD_OPTIONS '--follow --exclude .git --exclude node_modules --exclude .vim'
 set -gx FZF_DEFAULT_COMMAND "fd --type f --type l $FD_OPTIONS"
 set -gx FZF_CTRL_T_COMMAND "fd -uu --type f --type l $FD_OPTIONS"
 set -gx FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS"
@@ -27,6 +27,8 @@ set -gxa PATH "$HOME/fzf/bin"
 set -gxa PATH "$HOME/wezterm/target/release"
 set -gxa PATH "$HOME/.nvm/versions/node/v18.17.0/bin"
 set -gxa PATH "$HOME/.dotfiles/bin"
+
+set -gxa CDPATH "$HOME"
 
 abbr --add gs 'git status'
 abbr --add ga 'git add'

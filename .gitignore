@@ -3,7 +3,7 @@ zsh/plugins
 nvim/.netrwhist
 nvim/plugged
 fish/.config/fish/fish_variables
-fish/.config/fish/conf.d/grafana.fish
+fish/.config/fish/conf.d/secret-*.fish
 configstore
 coc
 dconf
