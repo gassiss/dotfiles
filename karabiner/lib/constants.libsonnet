@@ -44,8 +44,8 @@ local apps = {
 
 local device_ids = {
   builtin: {
-    product_id: 0,
-    vendor_id: 0,
+    product_id: std.parseInt(std.extVar("BUILTIN_PRODUCT_ID")),
+    vendor_id: std.parseInt(std.extVar("BUILTIN_VENDOR_ID")),
   },
   dygma: {
     product_id: 8705,
