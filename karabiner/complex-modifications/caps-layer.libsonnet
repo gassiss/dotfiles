@@ -10,6 +10,7 @@ local caps_layer = h.layer(c.keys.caps, { override_to_if_alone: kc(c.keys.none) 
   description: 'caps layer',
   manipulators: [
     caps_layer.key,
+    caps_layer.map('a') { to: kc(c.keys.esc) },
     caps_layer.map('j') { to: kc(c.keys.left) },
     caps_layer.map('k') { to: kc(c.keys.down) },
     caps_layer.map('l') { to: kc(c.keys.right) },

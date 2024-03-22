@@ -73,7 +73,8 @@ vim.keymap.set("n", "si", "5gt")
 vim.keymap.set("n", "<c-l>", "<c-w><c-w>")
 
 vim.keymap.set("n", "<C-h>", "<c-^>")
-vim.keymap.set("n", "<leader>-", "<cmd>Ex<cr>")
+vim.keymap.set("n", "<leader>-", "<cmd>Rex<cr>")
+vim.keymap.set("n", "<leader>_", "<cmd>Ex<cr>")
 -- vim.keymap.set("i", "<C-l>", "<C-o>O")
 -- vim.keymap.set("n", "<C-l>", "mlO<Esc>`l") -- insert new line above cursor
 -- vim.keymap.set("n", "<CR>", "mlo<Esc>`l") -- insert new line under cursor
