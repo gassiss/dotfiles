@@ -38,7 +38,8 @@ return {
       require("lspconfig").gopls.setup(config())
       -- go install github.com/grafana/jsonnet-language-server@latest
       require("lspconfig").jsonnet_ls.setup(config())
-      -- require("lspconfig").rust_analyzer.setup(config())
+      -- rustup component add rust-analyzer
+      require("lspconfig").rust_analyzer.setup(config())
 
       local function location_handler(_, result, ctx)
         local util = require("vim.lsp.util")

@@ -4,3 +4,6 @@ function format()
   vim.cmd('!npx prettier -w ' .. escaped);
 end
 vim.keymap.set('n', '<leader>&', format);
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2

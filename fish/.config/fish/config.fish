@@ -25,7 +25,6 @@ set -gxa PATH "$GOPATH/bin"
 set -gxa PATH "$HOME/.local/bin"
 set -gxa PATH "$HOME/fzf/bin"
 set -gxa PATH "$HOME/wezterm/target/release"
-set -gxa PATH "$HOME/.nvm/versions/node/v18.17.0/bin"
 set -gxa PATH "$HOME/.dotfiles/bin"
 
 set -gxa CDPATH "$HOME"

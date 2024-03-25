@@ -97,3 +97,4 @@ vim.keymap.set('i', '[=', '[]<left>')
 
 vim.keymap.set('n', '<leader>sq', ':mksession! .vim/session.vim<cr>:qa<cr>')
 vim.keymap.set('n', '<leader>sl', ':source .vim/session.vim<cr>')
+vim.keymap.set('n', '<leader>e', ':e!<cr>')
